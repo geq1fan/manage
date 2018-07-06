@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/common/common}">
+
+<head>
+    <title>生产线状态详情</title>
+</head>
+
+<body layout:fragment="content">
+    <nav class="breadcrumb">
+        <i class="Hui-iconfont">&#xe67f;</i>
+        首页
+        <span class="c-gray en">&gt;</span>
+        生产监控
+        <span class="c-gray en">&gt;</span>
+        生产线状态
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);"
+            title="刷新">
+            <i class="Hui-iconfont">&#xe68f;</i>
+        </a>
+    </nav>
+    <form id="myForm" th:action="@{/admin/productline/status}" th:method="get">
+        <div class="page-container">
+            <table class="table table-border table-bordered table-bg table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="12">生产线列表</th>
+                    </tr>
+                    <tr class="text-c">
+                        <!-- <th width="25">
+                            <input type="checkbox" name="" value="" />
+                        </th> -->
+                        <th>序号</th>
+                        <th>生产线名称</th>
+                        <th>客户端连接状态</th>
+                        <th>生产线运行状态</th>
+                        <th>时间</th>
+                        <th width="100">详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-c" th:each="model:${list}" th:object="${model}">
+                        <td th:text="${modelStat.count}">1</td>
+                        <td th:text="*{productlineName}">生产线1</td>
+                        <td class="td-status">
+                            <span class="label radius label-success" th:if="*{isClientConnect} == true">正常</span>
+                            <span class="label radius label-danger" th:unless="*{isClientConnect} == true">异常</span>
+                        </td>
+                        <td class="td-status">
+                            <span class="label radius label-success" th:if="*{isProductlineRun} == true">正常</span>
+                            <span class="label radius label-danger" th:unless="*{isProductlineRun} == true">异常</span>
+                        </td>
+                        <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
+                        <td class="td-manage">
+                            <a title="详情" href="javascript:;" onclick="system_log_show(this,'10001')" th:onclick="'javascript:status_view(\''+*{productlineName}+'运行状态详情\', \'/admin/productline/status/'+*{id}+'\',\'800\',\'500\');'"
+                                class="ml-5" style="text-decoration:none">
+                                <i class="Hui-iconfont">&#xe725;</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:replace="admin/common/page :: page"></div>
+        </div>
+    </form>
+
+    <script type="text/javascript" th:src="@{/js/common/page.js}"></script>
+    <script type="text/javascript" th:src="@{/js/admin/productline/productline-status.js}"></script>
+    <script th:inline="javascript">
+
+    </script>
+</body>
+
+</html>

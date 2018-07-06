@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/common/common}">
+
+<head>
+    <title>查看生产线历史数据详情</title>
+</head>
+
+<body layout:fragment="content">
+    <article class="page-container">
+        <form class="form form-horizontal" id="form-good-view" th:object="${model}">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">生产线名：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <span th:text="*{productlineName}"></span>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">客户端连接状态：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <span th:if="*{isClientConnect} == true">正常</span>
+                    <span th:unless="*{isClientConnect} == true">异常</span>
+                </div>
+            </div>
+            <th:block th:if="*{isClientConnect} == false">
+                <div class="row cl">
+                    <label class="form-label col-xs-4 col-sm-3">客户端连接异常详情：</label>
+                    <div class="formControls col-xs-8 col-sm-9">
+                        <span th:text="*{ClientConnectDetail}">未连接</span>
+                    </div>
+                </div>
+            </th:block>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">生产线运行状态：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <span th:if="*{isProductlineRun} == true">正常</span>
+                    <span th:unless="*{isProductlineRun} == true">异常</span>
+                </div>
+            </div>
+            <th:block th:if="*{isProductlineRun} == false">
+                <div class="row cl">
+                    <label class="form-label col-xs-4 col-sm-3">生产线运行异常详情：</label>
+                    <div class="formControls col-xs-8 col-sm-9">
+                        <span th:text="*{ProductlineRunDetail}">未连接</span>
+                    </div>
+                </div>
+            </th:block>
+        </form>
+    </article>
+
+</body>
+
+</html>
