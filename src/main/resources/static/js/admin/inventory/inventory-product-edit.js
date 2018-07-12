@@ -6,26 +6,41 @@ $(function () {
     });
 
     $("#form-inventory-edit").validate({
-        rules:{
-            perms:{
-                required:true
+        rules: {
+            name: {
+                required: true
+            },
+            type: {
+                required: true
+            },
+            location: {
+                required: true
+            },
+            repository: {
+                required: true
+            },
+            category: {
+                required: true
+            },
+            inventory: {
+                required: true
             }
         },
-        onkeyup:false,
-        focusCleanup:true,
-        success:"valid",
-        submitHandler:function(form){
+        onkeyup: false,
+        focusCleanup: true,
+        success: "valid",
+        submitHandler: function (form) {
             $(form).ajaxSubmit({
                 type: 'PUT',
-                url: "/admin/inventory/product/"+$("#pid").val(),
-                dataType:"json",
-                success: function(data){
-                    if(data.status == "success"){
+                url: "/admin/inventory/product/" + $("#pid").val(),
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == "success") {
                         succeedMessage(data.message);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.location.reload();
                         parent.layer.close(index);
-                    }else {
+                    } else {
                         errorMessage(data.message);
                     }
                 }

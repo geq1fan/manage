@@ -31,6 +31,54 @@ function inventory_del(obj, url) {
     });
 }
 
+
+/**
+ * 批量删除历史记录
+ */
+function inventory_batch_del() {
+
+    //复选框选择id集合
+    var selectedIds=[];
+    $(".text-c :checkbox").each(function (index, ele) {
+        var id = $(this).val();
+        var isSelected = this.checked;
+        if (isSelected) {
+            selectedIds.push(id);
+        } else {
+            selectedIds.removeObject(id);
+        }
+    });
+
+    if(selectedIds == ""){
+        errorMessage("请先选择一条记录!");
+        return false;
+    }
+
+    layer.confirm('确认要删除吗？',function(index){
+        //此处请求后台程序，下方是成功后的前台处理……
+        $.ajax({
+            type:"DELETE",
+            dataType:"json",
+            url: "/admin/productline/batch/"+selectedIds,
+            data:{
+                "timestamp":new Date().getTime()
+            },
+            statusCode: {
+                200 : function(data){
+                    succeedMessage(data.responseText);
+                    window.location.reload();
+                },
+                404 : function(data){
+                    errorMessage(data.responseText);
+                },
+                500 : function(){
+                    errorMessage('系统错误!');
+                }
+            }
+        });
+    });
+}
+
 /**
  * 添加产品信息
  * @param title

@@ -12,7 +12,7 @@
         <span class="c-gray en">&gt;</span>
         库存管理
         <span class="c-gray en">&gt;</span>
-        出入库
+        库存信息
         <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);"
             title="刷新">
             <i class="Hui-iconfont">&#xe68f;</i>
@@ -21,7 +21,7 @@
     <form id="myForm" th:action="@{/admin/inventory/list}" th:method="get">
         <div class="page-container">
             <div class="text-c">
-                <input type="text" class="input-text" style="width:250px" placeholder="输入产品规格" name="productType" th:value="${productType}"
+                <input type="text" class="input-text" style="width:250px" placeholder="输入产品类别" name="productType" th:value="${productType}"
                 />
                 <button type="submit" class="btn btn-success">
                     <i class="Hui-iconfont">&#xe665;</i>
@@ -30,9 +30,9 @@
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20">
                 <span class="l">
-                    <a href="javascript:;" th:onclick="'javascript:inventory_product_add(\'产品入库\',\'/admin/inventory/product/add\',\'800\',\'500\');'"
+                    <a href="javascript:;" th:onclick="'javascript:inventory_product_add(\'添加产品信息\',\'/admin/inventory/product/add\',\'800\',\'500\');'"
                         class="btn btn-primary radius">
-                        <i class="Hui-iconfont">&#xe600;</i> 产品入库</a>
+                        <i class="Hui-iconfont">&#xe600;</i> 添加产品信息</a>
                 </span>
                 <span class="r">共有数据：
                     <strong th:text="${pageInfo?.total}" id="total">54</strong> 条</span>
@@ -45,11 +45,10 @@
                     <tr class="text-c">
                         <th>序号</th>
                         <th>产品名称</th>
-                        <th>产品规格</th>
                         <th>产品类别</th>
+                        <th>产品价格</th>
                         <th>产品库存</th>
-                        <th>所处库房</th>
-                        <th>所处库位</th>
+                        <th>产品工艺路线</th>
                         <th>最后修改时间</th>
                         <th width="100">操作</th>
                     </tr>
@@ -59,13 +58,9 @@
                         <td th:text="${((pageInfo?.pageNum - 1) * pageInfo?.pageSize) + modelStat.count}">d</td>
                         <td th:text="*{name}">2</td>
                         <td th:text="*{type}">3</td>
-                        <td class="td-category">
-                            <span class="label radius label-success" th:if="*{category} == true">成品</span>
-                            <span class="label radius label-danger" th:unless="*{category} == true">原料</span>
-                        </td>
+                        <td th:text="*{price}"></td>
                         <td th:text="*{inventory}"></td>
-                        <td th:text="*{location}"></td>
-                        <td th:text="*{repository}"></td>
+                        <td th:text="*{routing}"></td>
                         <td th:text="*{#dates.format(modifyTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
                         <td class="td-manage">
                             <a title="编辑" href="javascript:;" onclick="system_log_show(this,'10001')" th:onclick="'javascript:inventory_product_edit(\'编辑产品信息\', \'/admin/inventory/product/edit/'+*{id}+'\',\'800\',\'500\');'"

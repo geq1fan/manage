@@ -11,6 +11,8 @@ import com.ge.modules.inventory.model.Product;
 import com.ge.modules.inventory.service.ProductService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xiaoleilu.hutool.date.DateUtil;
+import com.xiaoleilu.hutool.util.StrUtil;
 
 import tk.mybatis.mapper.entity.Example;
 
@@ -27,11 +29,33 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements Prod
 
 	@Transactional(readOnly = true)
 	@Override
-	public PageInfo<Product> findPage(Integer pageNum, Integer pageSize, String productType) {
+	public PageInfo<Product> findProductPage(Integer pageNum, Integer pageSize, String productType) {
 		Example example = new Example(Product.class);
 		Example.Criteria criteria = example.createCriteria();
 		if (StringUtils.isNotEmpty(productType)) {
 			criteria.andLike("type", "%" + productType + "%");
+		}
+		// 倒序
+		example.orderBy("createTime").desc();
+		// 分页
+		PageHelper.startPage(pageNum, pageSize);
+		List<Product> productsList = this.selectByExample(example);
+
+		return new PageInfo<>(productsList);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public PageInfo<Product> findInventoryPage(Integer pageNum, Integer pageSize, String productType, String startTime,
+			String endTime) {
+		Example example = new Example(Product.class);
+		Example.Criteria criteria = example.createCriteria();
+		if (StringUtils.isNotEmpty(productType)) {
+			criteria.andLike("type", "%" + productType + "%");
+		}
+		if (StrUtil.isNotEmpty(startTime) && StrUtil.isNotEmpty(endTime)) {
+			criteria.andBetween("createTime", DateUtil.beginOfDay(DateUtil.parse(startTime)),
+					DateUtil.endOfDay(DateUtil.parse(endTime)));
 		}
 		// 倒序
 		example.orderBy("createTime").desc();

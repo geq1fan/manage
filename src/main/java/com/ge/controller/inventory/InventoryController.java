@@ -1,5 +1,6 @@
 package com.ge.controller.inventory;
 
+
 import javax.annotation.Resource;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -44,7 +45,7 @@ public class InventoryController extends BaseController {
 	public String listProductInformation(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
 			String productType, ModelMap modelMap) {
 		try {
-			PageInfo<Product> pageInfo = productService.findPage(pageNum, PAGESIZE, productType);
+			PageInfo<Product> pageInfo = productService.findProductPage(pageNum, PAGESIZE, productType);
 			log.info("分页查询产品列表结果！ pageInfo = {}", pageInfo);
 			modelMap.put("pageInfo", pageInfo);
 			modelMap.put("productType", productType);
@@ -121,32 +122,16 @@ public class InventoryController extends BaseController {
 		return BASE_PATH + "inventory-product-add";
 	}
 
-	@FormToken(remove = true)
 	@ResponseBody
-	@PostMapping("/product/add")
-	public ModelMap saveProductInformation(Long id, Product product) {
+	@FormToken(remove = true)
+	@PostMapping("/product")
+	public ModelMap saveProductInformation(Product product) {
 		ModelMap modelMap = new ModelMap();
-
+		productService.save(product);
+		log.info("添加产品信息成功! productId = {}", product.getId());
+		modelMap.put("status", SUCCESS);
+		modelMap.put("message", "添加成功!");
 		return modelMap;
 	}
 
-	/**
-	 * 根据产品名称和类型判断产品是否存在
-	 * 
-	 * @param id
-	 * @param productName
-	 * @return
-	 * @throws Exception
-	 */
-	@ResponseBody
-	@GetMapping("/product/isExist")
-	public Boolean isProductExist(Long id, String type) throws Exception {
-		boolean flag = true;
-		Product record = productService.findByProductName(type);
-		if (null != record && !record.getId().equals(id)) {
-			flag = false;
-		}
-		log.info("检验产品名是否存在结果! flag = {}", flag);
-		return flag;
-	}
 }

@@ -14,13 +14,25 @@ public class Product extends BaseEntity {
      */
 	private String name;
 	/**
-     * 产品类型
+     * 产品规格
      */
 	private String type;
+	/**
+     * 产品类型
+     */
+	private Boolean category;
 	/**
      * 产品价格
      */
 	private Double price;
+	/**
+     * 所处库房
+     */
+	private String location;
+	/**
+     * 所处库位
+     */
+	private String Repository;
 	/**
      * 产品库存
      */

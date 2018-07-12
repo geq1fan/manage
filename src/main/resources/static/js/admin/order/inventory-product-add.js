@@ -9,16 +9,29 @@ $(function () {
         rules: {
             type: {
                 required: true,
-
+                remote: {
+                    url: "/admin/inventory/product/isExist",
+                    type: "get",
+                    data: {
+                        type: function () {
+                            return $("#type").val();
+                        }
+                    }
+                }
             },
             name: {
                 required: true
             },
-            category: {
+            price: {
                 required: true
             },
             inventory: {
                 required: true
+            }
+        },
+        messages: {
+            type: {
+                remote: "该产品规格已经存在！"
             }
         },
         onkeyup: false,
