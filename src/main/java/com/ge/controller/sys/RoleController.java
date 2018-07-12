@@ -137,7 +137,7 @@ public class RoleController extends BaseController{
     @FormToken(save = true)
     @RequiresPermissions("role:update")
     @GetMapping(value = "/edit/{id}")
-    public String edit(@PathVariable("id") Long id, ModelMap modelMap) throws Exception {
+    public String edit(@PathVariable("id") Long id, ModelMap modelMap) {
         log.debug("跳转到编辑角色信息页面参数! id = {}", id);
         Role role = roleService.findById(id);
 

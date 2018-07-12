@@ -1,7 +1,5 @@
 package com.ge.modules.productline.model;
 
-import java.util.Date;
-
 import com.ge.common.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
