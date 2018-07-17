@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/common/common}">
+
+<head>
+	<title>创建订单</title>
+</head>
+
+<body layout:fragment="content">
+	<article class="page-container">
+		<form action="" method="post" class="form form-horizontal" id="form-order-check" th:object="${model}">
+			<input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}" />
+			<input type="hidden" th:value="*{id}" th:id="pid" />
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">商品名称：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="" id="name" name="name"
+					 th:name="name" th:value="*{name}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">商品规格：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="" id="type" name="type"
+					 th:name="type" th:value="*{type}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">商品价格：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="" id="price" name="price"
+					 th:name="price" th:value="*{price}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">数量：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="" id="amount" name="amount"
+					 th:name="amount" th:value="*{amount}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">交货期：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="" id="deadline" name="deadline"
+					 th:name="deadline" th:value="*{deadline}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">逾期罚金：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="" id="penalty" name="penalty"
+					 th:name="penalty" th:value="*{penalty}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">备注：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder="" id="notes" name="notes"
+					 th:name="notes" th:value="*{notes}" />
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">
+					<span class="c-red">*</span>审核结果：</label>
+				<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+					<div class="radio-box">
+						<input type="radio" id="category-1" checked="checked" th:name="processed" th:value="1" />
+						<label for="category-1">通过</label>
+					</div>
+					<div class="radio-box">
+						<input type="radio" id="category-2" th:name="processed" th:value="0" />
+						<label for="category-2">搁置</label>
+					</div>
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">
+					<span class="c-red">*</span>审核人：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" placeholder="" id="verifier" name="verifier" th:name="verifier" th:value="*{verifier}" />
+				</div>
+			</div>
+
+			<div class="row cl">
+				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+					<button type="submit" class="btn btn-success radius" id="admin-role-save">
+						<i class="icon-ok"></i> 确定</button>
+				</div>
+			</div>
+		</form>
+	</article>
+
+	<script type="text/javascript" th:src="@{/js/admin/order/order-check.js}"></script>
+</body>
+
+</html>
