@@ -1,0 +1,8 @@
+GET http://localhost:8081/admin
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-17T042819.200.html
+
+###
+

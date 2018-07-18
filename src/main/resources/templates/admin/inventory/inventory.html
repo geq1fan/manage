@@ -12,7 +12,7 @@
         <span class="c-gray en">&gt;</span>
         库存管理
         <span class="c-gray en">&gt;</span>
-        出入库
+        出入库管理
         <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);"
             title="刷新">
             <i class="Hui-iconfont">&#xe68f;</i>
@@ -32,7 +32,7 @@
                 <span class="l">
                     <a href="javascript:;" th:onclick="'javascript:inventory_product_add(\'产品入库\',\'/admin/inventory/product/add\',\'800\',\'500\');'"
                         class="btn btn-primary radius">
-                        <i class="Hui-iconfont">&#xe600;</i> 产品入库</a>
+                        <i class="Hui-iconfont">&#xe647;</i> 产品入库</a>
                 </span>
                 <span class="r">共有数据：
                     <strong th:text="${pageInfo?.total}" id="total">54</strong> 条</span>
@@ -70,7 +70,7 @@
                         <td class="td-manage">
                             <a title="编辑" href="javascript:;" onclick="system_log_show(this,'10001')" th:onclick="'javascript:inventory_product_edit(\'产品出库\', \'/admin/inventory/product/edit/'+*{id}+'\',\'800\',\'500\');'"
                                 class="ml-5" style="text-decoration:none">
-                                <i class="Hui-iconfont">&#xe6df;</i>
+                                <i class="Hui-iconfont">&#xe634;</i>
                             </a>
                             <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" th:onclick="'javascript:inventory_del(this, \'/admin/inventory/product/'+*{id}+'\');'"
                                 class="ml-5" style="text-decoration:none">

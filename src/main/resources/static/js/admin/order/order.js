@@ -68,13 +68,14 @@ function order_add(title, url, w, h) {
         }
     });
 
-    if (selectedId == undefined) {
+    if (selectedId === undefined) {
         errorMessage("请先选择一项商品!");
         return false;
-    } else {
+    }
+    layer.confirm('确定创建订单？', function (index) {
         url = url + '/' + selectedId;
         layer_show(title, url, w, h);
-    }
+    });
 }
 
 /**

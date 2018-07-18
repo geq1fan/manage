@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/common/common}">
+
+<head>
+    <title>订单生产调度</title>
+</head>
+
+<body layout:fragment="content">
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i>
+    首页
+    <span class="c-gray en">&gt;</span>
+    调度管理
+    <span class="c-gray en">&gt;</span>
+    订单生产调度
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);"
+       title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<form id="myForm" th:action="@{/admin/schedule/order}" th:method="get">
+    <div class="page-container">
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
+            <span class="l">
+                <a href="javascript:;"
+                   th:onclick="'javascript:order_schedule(\'订单生产调度\',\'/admin/schedule/order\',\'800\',\'500\');'"
+                   class="btn btn-success radius"><i class="Hui-iconfont">&#xe6ab;</i> 进行生产调度</a>
+            </span>
+            <span class="r">共有数据：
+                <strong th:text="${pageInfo?.total}" id="total">54</strong> 条</span>
+        </div>
+        <table class="table table-border table-bordered table-bg table-hover">
+            <thead>
+            <tr>
+                <th scope="col" colspan="12">待处理订单列表</th>
+            </tr>
+            <tr class="text-c">
+                <th width="25"><input type="checkbox" name="" value=""/></th>
+                <th>序号</th>
+                <th>产品名称</th>
+                <th>产品规格</th>
+                <th>产品价格</th>
+                <th>订购数量</th>
+                <th>交货日期</th>
+                <th>逾期罚金</th>
+                <th>审核人</th>
+                <th width="120">订单创建时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-c" th:each="model:${pageInfo?.list}" th:object="${model}">
+                <td><input type="checkbox" th:value="*{id}"/></td>
+                <td th:text="${((pageInfo?.pageNum - 1) * pageInfo?.pageSize) + modelStat.count}">d</td>
+                <td th:text="*{name}">d</td>
+                <td th:text="*{type}">d</td>
+                <td th:text="*{price}">d</td>
+                <td th:text="*{amount}">d</td>
+                <td th:text="*{deadline}">d</td>
+                <td th:text="*{penalty}">d</td>
+                <td th:text="*{verifier}">d</td>
+                <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:replace="admin/common/page :: page"></div>
+    </div>
+</form>
+
+<script type="text/javascript" th:src="@{/js/common/page.js}"></script>
+<script type="text/javascript" th:src="@{/js/admin/schedule/order/schedule-order.js}"></script>
+<script th:inline="javascript">
+
+</script>
+</body>
+
+</html>

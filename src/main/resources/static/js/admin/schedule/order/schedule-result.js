@@ -6,25 +6,13 @@ $(function () {
     });
 
     $("#form-order-add").validate({
-        rules: {
-            amount: {
-                required: true,
-
-            },
-            deadline: {
-                required: true
-            },
-            penalty: {
-                required: true
-            }
-        },
         onkeyup: false,
         focusCleanup: true,
         success: "valid",
         submitHandler: function (form) {
             $(form).ajaxSubmit({
                 type: 'post',
-                url: "/admin/order",
+                url: "/admin/schedule/order",
                 dataType: "json",
                 success: function (data) {
                     if (data.status === "success") {

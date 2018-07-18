@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/common/common}">
+
+<head>
+    <title>调度结果确认表</title>
+</head>
+
+<body layout:fragment="content">
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-order-add" th:object="${model}">
+        <input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}"/>
+
+        <table class="table table-border table-bordered table-bg table-hover">
+            <thead>
+            <tr>
+                <th scope="col" colspan="12">调度结果</th>
+            </tr>
+            <tr class="text-c">
+                <th>序号</th>
+                <th>产品名称</th>
+                <th>产品规格</th>
+                <th>产品价格</th>
+                <th>订购数量</th>
+                <th>交货日期</th>
+                <th>逾期罚金</th>
+                <th>订单创建时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-c" th:each="model:${pageInfo?.list}" th:object="${model}">
+                <td th:text="${((pageInfo?.pageNum - 1) * pageInfo?.pageSize) + modelStat.count}">d</td>
+                <td th:text="*{name}">d</td>
+                <td th:text="*{type}">d</td>
+                <td th:text="*{price}">d</td>
+                <td th:text="*{amount}">d</td>
+                <td th:text="*{deadline}">d</td>
+                <td th:text="*{penalty}">d</td>
+                <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:replace="admin/common/page :: page"></div>
+
+        <input type="hidden" th:name="result" th:value="${result}"/>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>是否提交调度结果：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="radio-box">
+                    <input type="radio" id="category-1" checked="checked" th:name="isCommit" th:value="1"/>
+                    <label for="category-1">是</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="category-2" th:name="isCommit" th:value="0"/>
+                    <label for="category-2">否</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-success radius" id="admin-role-save">
+                    <i class="icon-ok"></i> 确定
+                </button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<script type="text/javascript" th:src="@{/js/admin/schedule/order/schedule-result.js}"></script>
+</body>
+
+</html>

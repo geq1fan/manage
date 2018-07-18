@@ -6,43 +6,47 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 public class OrderInfo extends BaseEntity {
-	
-	/**
+
+    /**
      * 订单的产品名称
      */
-	private String name;
-	/**
+    private String name;
+    /**
      * 订单的产品规格
      */
-	private String type;
-	/**
+    private String type;
+    /**
      * 订单的产品价格
      */
-	private double price;
-	/**
+    private double price;
+    /**
      * 订购总数
      */
-	private Integer amount;
-	/**
+    private Integer amount;
+    /**
      * 交货期限
      */
-	private Integer deadline;
-	/**
+    private Integer deadline;
+    /**
      * 罚金制度
      */
-	private String penalty;
-	/**
+    private String penalty;
+    /**
      * 备注
      */
-	private String notes;
-	/**
+    private String notes;
+    /**
      * 是否已处理
      */
-	private Boolean processed;
-	/**
+    private Boolean processed;
+    /**
      * 审核人
      */
-	private String verifier;
+    private String verifier;
+    /**
+     * 是否过期
+     */
+    private Boolean expired;
 }
