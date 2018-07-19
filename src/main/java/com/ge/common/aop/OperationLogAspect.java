@@ -85,10 +85,9 @@ public class OperationLogAspect {
     /**
      * 切入点return内容之后切入内容（可以用来对处理返回值做一些加工处理）
      * @param ret
-     * @throws Throwable
      */
     @AfterReturning(returning = "ret", pointcut = "logPointCut()")
-    public void doAfterReturning(Object ret) throws Throwable {
+    public void doAfterReturning(Object ret) {
         // 处理完请求，返回内容
 
         Log log = localLog.get();
@@ -132,10 +131,8 @@ public class OperationLogAspect {
      *
      * @param joinPoint 切点
      * @return 方法描述
-     * @throws Exception
      */
-    private static String getMethodDescription(JoinPoint joinPoint)
-            throws Exception {
+    private static String getMethodDescription(JoinPoint joinPoint) {
         String description = "";
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();

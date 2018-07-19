@@ -45,8 +45,6 @@ public class OrderController extends BaseController {
             PageInfo<OrderInfo> pageInfo = orderService.findOrderPage(pageNum, PAGESIZE, endTime, startTime, processed, expired);
             log.info("分页查询订单列表结果！ pageInfo = {}", pageInfo);
             modelMap.put("pageInfo", pageInfo);
-            modelMap.put("processed", processed);
-            modelMap.put("processed", expired);
         } catch (Exception e) {
             log.error("分页查询订单列表失败! e = {}", e);
         }

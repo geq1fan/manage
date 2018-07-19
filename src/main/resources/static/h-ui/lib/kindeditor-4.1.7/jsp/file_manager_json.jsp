@@ -21,7 +21,7 @@ String[] fileTypes = new String[]{"gif", "jpg", "jpeg", "png", "bmp"};
 
 String dirName = request.getParameter("dir");
 if (dirName != null) {
-	if(!Arrays.<String>asList(new String[]{"image", "flash", "media", "file"}).contains(dirName)){
+    if (!Arrays.asList(new String[]{"image", "flash", "media", "file"}).contains(dirName)) {
 		out.println("Invalid Directory name.");
 		return;
 	}
@@ -80,7 +80,7 @@ if(currentPathFile.listFiles() != null) {
 			hash.put("is_dir", false);
 			hash.put("has_file", false);
 			hash.put("filesize", file.length());
-			hash.put("is_photo", Arrays.<String>asList(fileTypes).contains(fileExt));
+            hash.put("is_photo", Arrays.asList(fileTypes).contains(fileExt));
 			hash.put("filetype", fileExt);
 		}
 		hash.put("filename", fileName);

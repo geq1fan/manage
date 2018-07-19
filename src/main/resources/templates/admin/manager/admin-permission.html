@@ -27,8 +27,9 @@
 			</div>
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
 				<span class="l">
-					<a href="javascript:;" onclick="admin_permission_add('添加权限节点','admin-permission-add.html','','310')" th:onclick="'javascript:admin_permission_add(\'添加权限节点\',\'/admin/permission/add\',\'800\',\'500\');'"
-					 class="btn btn-primary radius">
+					<a href="javascript:" onclick="admin_permission_add('添加权限节点','admin-permission-add.html','','310')"
+                       th:onclick="'javascript:admin_permission_add(\'添加权限节点\',\'/admin/permission/add\',\'800\',\'500\');'"
+                       class="btn btn-primary radius">
 						<i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a>
 				</span>
 			</div>
@@ -64,12 +65,15 @@
 						</td>
 						<td th:text="*{sort}">排序号</td>
 						<td>
-							<a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" th:onclick="'javascript:admin_permission_add(\'编辑权限节点\',\'/admin/permission/edit/'+*{id}+'/'+*{type}+'\',\'800\',\'500\');'"
-							 class="ml-5" style="text-decoration:none">
+                            <a title="编辑" href="javascript:"
+                               onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')"
+                               th:onclick="'javascript:admin_permission_add(\'编辑权限节点\',\'/admin/permission/edit/'+*{id}+'/'+*{type}+'\',\'800\',\'500\');'"
+                               class="ml-5" style="text-decoration:none">
 								<i class="Hui-iconfont">&#xe6df;</i>
 							</a>
-							<a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" th:onclick="'javascript:admin_permission_del(this, \'/admin/permission/'+*{id}+'\');'"
-							 class="ml-5" style="text-decoration:none">
+                            <a title="删除" href="javascript:" onclick="admin_permission_del(this,'1')"
+                               th:onclick="'javascript:admin_permission_del(this, \'/admin/permission/'+*{id}+'\');'"
+                               class="ml-5" style="text-decoration:none">
 								<i class="Hui-iconfont">&#xe6e2;</i>
 							</a>
 						</td>

@@ -6,5 +6,5 @@ import com.github.pagehelper.PageInfo;
 
 public interface OrderProductService extends BaseService<OrderProduct> {
 
-	public PageInfo<OrderProduct> findProductPage(Integer pageNum, Integer pageSize, String productType);
+    PageInfo<OrderProduct> findProductPage(Integer pageNum, Integer pageSize, String productType);
 }

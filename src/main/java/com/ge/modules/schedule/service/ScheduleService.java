@@ -6,5 +6,5 @@ import com.ge.modules.schedule.model.ScheduleInfo;
 import java.util.List;
 
 public interface ScheduleService extends BaseService<ScheduleInfo> {
-    public List<Long> getOrderScheduleResult(List<Object> ids);
+    List<Long> getOrderScheduleResult(List<Object> ids);
 }

@@ -33,8 +33,7 @@ import java.util.Deque;
 public class LoginFilter extends AccessControlFilter {
 
 	@Override
-	protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o)
-			throws Exception {
+    protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) {
 		return false;
 	}
 

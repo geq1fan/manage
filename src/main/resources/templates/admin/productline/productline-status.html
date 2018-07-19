@@ -51,8 +51,9 @@
                         </td>
                         <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
                         <td class="td-manage">
-                            <a title="详情" href="javascript:;" onclick="system_log_show(this,'10001')" th:onclick="'javascript:status_view(\''+*{productlineName}+'运行状态详情\', \'/admin/productline/status/'+*{id}+'\',\'800\',\'500\');'"
-                                class="ml-5" style="text-decoration:none">
+                            <a title="详情" href="javascript:" onclick="system_log_show(this,'10001')"
+                               th:onclick="'javascript:status_view(\''+*{productlineName}+'运行状态详情\', \'/admin/productline/status/'+*{id}+'\',\'800\',\'500\');'"
+                               class="ml-5" style="text-decoration:none">
                                 <i class="Hui-iconfont">&#xe725;</i>
                             </a>
                         </td>

@@ -23,17 +23,8 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderInfo> implements Orde
                                              Boolean processed, Boolean expired) {
         Example example = new Example(OrderInfo.class);
         Example.Criteria criteria = example.createCriteria();
-        if (processed == null) {
-            processed = false;
-        }
-        if (expired == null) {
-            expired = false;
-        }
-        if (expired) {
-            criteria.andEqualTo("expired", expired);
-        } else {
-            criteria.andEqualTo("processed", processed);
-        }
+        criteria.andEqualTo("expired", expired);
+        criteria.andEqualTo("processed", processed);
 
         if (StrUtil.isNotEmpty(startTime) && StrUtil.isNotEmpty(endTime)) {
             criteria.andBetween("createTime", DateUtil.beginOfDay(DateUtil.parse(startTime)),

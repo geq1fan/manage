@@ -35,7 +35,8 @@
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20">
                 <span class="l">
-                    <a href="javascript:;" onclick="datadel()" th:onclick="'javascript:productline_batch_del();'" class="btn btn-danger radius">
+                    <a href="javascript:" onclick="datadel()" th:onclick="'javascript:productline_batch_del();'"
+                       class="btn btn-danger radius">
                         <i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
                 </span>
                 <span class="r">共有数据：
@@ -79,12 +80,14 @@
                         <td th:text="*{heightDeviation}"></td>
                         <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
                         <td class="td-manage">
-                            <a title="详情" href="javascript:;" onclick="system_log_show(this,'10001')" th:onclick="'javascript:history_view(\'查看生产线历史数据详情\', \'/admin/productline/history/'+*{id}+'\',\'800\',\'500\');'"
-                                class="ml-5" style="text-decoration:none">
+                            <a title="详情" href="javascript:" onclick="system_log_show(this,'10001')"
+                               th:onclick="'javascript:history_view(\'查看生产线历史数据详情\', \'/admin/productline/history/'+*{id}+'\',\'800\',\'500\');'"
+                               class="ml-5" style="text-decoration:none">
                                 <i class="Hui-iconfont">&#xe665;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" th:onclick="'javascript:history_del(this, \'/admin/productline/history/'+*{id}+'\');'"
-                                class="ml-5" style="text-decoration:none">
+                            <a title="删除" href="javascript:" onclick="admin_del(this,'1')"
+                               th:onclick="'javascript:history_del(this, \'/admin/productline/history/'+*{id}+'\');'"
+                               class="ml-5" style="text-decoration:none">
                                 <i class="Hui-iconfont">&#xe6e2;</i>
                             </a>
                         </td>

@@ -106,7 +106,7 @@ public final class SpringUtils implements ApplicationContextAware, DisposableBea
 	 * @see org.springframework.beans.factory.DisposableBean#destroy()
 	 * 实现了DisposableBean接口，实现destroy()方法
 	 */
-	public void destroy() throws Exception {
+    public void destroy() {
 		applicationContext = null;
 	}
 

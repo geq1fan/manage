@@ -58,7 +58,7 @@ Array.prototype.inArray = function(obj) {
 	}
 
 	return false;
-}
+};
 
 /**
  * 查找对象在数组中的位置
@@ -72,7 +72,7 @@ Array.prototype.indexOf = function(obj) {
 	}
 
 	return -1;
-}
+};
 
 /**
  * 方法:removeObject(obj)
@@ -141,7 +141,7 @@ Array.prototype.findObjectById = function(id) {
  */
 String.prototype.trim = function() {
 	return this.replace(/\s+/g, "");
-}
+};
 
 /**
  * 是否为空白
@@ -158,7 +158,7 @@ function strIsBlank(str2check) {
  */
 String.prototype.lTrim = function() {
 	return this.replace(/(^\s+)/g, "");
-}
+};
 
 /**
  * 删除右边的空白
@@ -167,7 +167,7 @@ String.prototype.lTrim = function() {
  */
 String.prototype.rTrim = function() {
 	return this.replace(/(\s+$)/g, "");
-}
+};
 
 /**
  * 是否有效的手机号码
@@ -177,7 +177,7 @@ String.prototype.rTrim = function() {
 String.prototype.test = function() {
 	return (new RegExp(/^([\S^'^‘^’]{6,20})$/)
 		.test(this));
-}
+};
 
 /**
  * 是否有效的手机号码
@@ -187,7 +187,7 @@ String.prototype.test = function() {
 String.prototype.isMobileNum = function() {
 	return (new RegExp(/^((13[0-9])|(14[4,7])|(15[^4,\D])|(17[6-8])|(18[0-9]))(\d{8})$/)
 		.test(this));
-}
+};
 
 /**
  * 是否有效的邮箱
@@ -199,7 +199,7 @@ String.prototype.isEmail = function() {
 //			/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.([a-zA-Z0-9_-]){2,3}){1,2})$/)
 		/^([\w-_])+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/)
 		.test(this));
-}
+};
 
 /**
  * 是否是QQ邮箱
@@ -214,26 +214,26 @@ String.prototype.isQQEmail = function(){
 	 return true;
 	 */
 	return false;
-}
+};
 
 //验证身份证
 String.prototype.isCardNo = function() {
 	return (new RegExp(/^[1-9]([0-9]{16}|[0-9]{13})[xX0-9]$/)
 		.test(this));
-}
+};
 
 /**
  * 是否为数字
  */
 String.prototype.isNumber=function(){
 	return (new RegExp(/^[0-9]*$/).test(this));
-}
+};
 /**
  * 密码是否正确
  */
 String.prototype.password=function(){
 	return (new RegExp(/^[\w]{6,12}$/).test(this));
-}
+};
 /**
  * 是否日期
  *
@@ -243,14 +243,14 @@ String.prototype.isDate = function() {
 	return (new RegExp(
 		/^([1-2]\d{3})[\/|\-](0?[1-9]|10|11|12)[\/|\-]([1-2]?[0-9]|0[1-9]|30|31)$/ig)
 		.test(this));
-}
+};
 
 /**
  * 替换全部
  */
 String.prototype.replaceAll  = function(s1,s2){
 	return this.replace(new RegExp(s1,"gm"),s2);
-}
+};
 
 /**
  * 克隆(深拷贝)
@@ -299,9 +299,9 @@ function replaceAllHTML(content){
 /**
  * 替换全部
  */
-String.prototype.replaceAll  = function(s1,s2){     
-    return this.replace(new RegExp(s1,"gm"),s2);     
-}
+String.prototype.replaceAll  = function(s1,s2){
+    return this.replace(new RegExp(s1, "gm"), s2);
+};
 
 /**
  * 全局的ajax访问，处理ajax清求时sesion超时和无权限提示

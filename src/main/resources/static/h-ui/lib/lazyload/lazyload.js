@@ -39,20 +39,20 @@
         },
         isIOS = (/(?:iphone|ipod|ipad).*os/gi).test(navigator.appVersion),
         isIOS5 = isIOS && (/(?:iphone|ipod|ipad).*os 5/gi).test(navigator.appVersion),
-        type // function
+        type; // function
 
     function emptyFn(){}
 
     type = (function(){
-        var object_prototype_toString = Object.prototype.toString
+        var object_prototype_toString = Object.prototype.toString;
         return function(obj){
             // todo: compare the speeds of replace string twice or replace a regExp
             return object_prototype_toString.call(obj).replace('[object ','').replace(']','')
         }
-    })()
+    })();
 
     function belowthefold($element, options){
-        var fold
+        var fold;
         if(options._$container == $window){
             fold = ('innerHeight' in w ? w.innerHeight : $window.height()) + $window.scrollTop()
         }else{
@@ -62,7 +62,7 @@
     }
 
     function rightoffold($element, options){
-        var fold
+        var fold;
         if(options._$container == $window){
             // Zepto do not support `$window.scrollLeft()` yet.
             fold = $window.width() + ($.fn.scrollLeft?$window.scrollLeft():w.pageXOffset)
@@ -73,7 +73,7 @@
     }
 
     function abovethetop($element, options){
-        var fold
+        var fold;
         if(options._$container == $window){
             fold = $window.scrollTop()
         }else{
@@ -85,7 +85,7 @@
     }
 
     function leftofbegin($element, options){
-        var fold
+        var fold;
         if(options._$container == $window){
             // Zepto do not support `$window.scrollLeft()` yet.
             fold = $.fn.scrollLeft?$window.scrollLeft():w.pageXOffset
@@ -96,16 +96,16 @@
     }
 
     function checkAppear($elements, options){
-        var counter = 0
+        var counter = 0;
         $elements.each(function(i,e){
-            var $element = $elements.eq(i)
+            var $element = $elements.eq(i);
             if(options.skip_invisible &&
             // Support zepto
              !($element.width() || $element.height()) && $element.css("display") !== "none"){
                 return
             }
             function appear(){
-                $element.trigger('_lazyload_appear')
+                $element.trigger('_lazyload_appear');
                 // if we found an image we'll load, reset the counter 
                 counter = 0
             }
@@ -149,7 +149,7 @@
                 isScrollEvent,
                 isScrollTypeEvent,
                 scrollTimer = null,
-                hasMinimumInterval
+                hasMinimumInterval;
 
             if(!$.isPlainObject(options)){
                 options = {}
@@ -176,12 +176,12 @@
                 }else if(defaultOptions.hasOwnProperty(k) && (!options.hasOwnProperty(k) || (type(options[k]) != type(defaultOptions[k])))){
                     options[k] = v
                 }
-            })
+            });
 
-            isScrollEvent = options.event == 'scroll'
+            isScrollEvent = options.event == 'scroll';
 
             // isScrollTypeEvent. cantains custom scrollEvent . Such as 'scrollstart' & 'scrollstop'
-            isScrollTypeEvent = isScrollEvent || options.event == 'scrollstart' || options.event == 'scrollstop'
+            isScrollTypeEvent = isScrollEvent || options.event == 'scrollstart' || options.event == 'scrollstop';
 
             $elements.each(function(i,e){
                 var element = this,
@@ -192,15 +192,15 @@
                         originalSrcInAttr:
                         options.url_rewriter_fn.call(element,$element,originalSrcInAttr),
                     originalSrcset = $element.attr('data-'+options.data_srcset_attribute),
-                    isImg = $element.is('img')
+                    isImg = $element.is('img');
 
                 if($element._lazyload_loadStarted == true || placeholderSrc == originalSrc){
-                    $element._lazyload_loadStarted = true
-                    $elements = getUnloadElements($elements)
+                    $element._lazyload_loadStarted = true;
+                    $elements = getUnloadElements($elements);
                     return
                 }
 
-                $element._lazyload_loadStarted = false
+                $element._lazyload_loadStarted = false;
 
                 // If element is an img and no src attribute given, use placeholder. 
                 if(isImg && !placeholderSrc){
@@ -213,7 +213,7 @@
                 // When appear is triggered load original image. 
                 $element.one('_lazyload_appear',function(){
                     var effectParamsIsArray = $.isArray(options.effect_params),
-                        effectIsNotImmediacyShow
+                        effectIsNotImmediacyShow;
                     function loadFunc(){
                         // In most situations, the effect is immediacy show, at this time there is no need to hide element first
                         // Hide this element may cause css reflow, call it as less as possible
@@ -238,11 +238,11 @@
                         $elements = getUnloadElements($elements)
                     }
                     if(!$element._lazyload_loadStarted){
-                        effectIsNotImmediacyShow = (options.effect != 'show' && $.fn[options.effect] && (!options.effect_params || (effectParamsIsArray && options.effect_params.length == 0)))
+                        effectIsNotImmediacyShow = (options.effect != 'show' && $.fn[options.effect] && (!options.effect_params || (effectParamsIsArray && options.effect_params.length == 0)));
                         if(options.appear != emptyFn){
                             options.appear.call(element, $elements.length, options)
                         }
-                        $element._lazyload_loadStarted = true
+                        $element._lazyload_loadStarted = true;
                         if(options.no_fake_img_loader || originalSrcset){
                             if(options.load != emptyFn){
                                 $element.one('load',function(){
@@ -252,14 +252,14 @@
                             loadFunc()
                         }else{
                             $('<img />').one('load', function(){ // `on` -> `one` : IE6 triggered twice load event sometimes
-                                loadFunc()
+                                loadFunc();
                                 if(options.load != emptyFn){
                                     options.load.call(element, $elements.length, options)
                                 }
                             }).attr('src',originalSrc)
                         }
                     }
-                })
+                });
 
                 // When wanted event is triggered load original image 
                 // by triggering appear.                              
@@ -270,17 +270,17 @@
                         }
                     })
                 }
-            })
+            });
 
             // Fire one scroll event per scroll. Not one scroll event per image. 
             if(isScrollTypeEvent){
-                hasMinimumInterval = options.minimum_interval != 0
+                hasMinimumInterval = options.minimum_interval != 0;
                 options._$container.on(options.event, function(){
                     // desktop and Android device triggered many times `scroll` event in once user scrolling
                     if(isScrollEvent && hasMinimumInterval && (!isIOS || options.use_minimum_interval_in_ios)){
                         if(!scrollTimer){
                             scrollTimer = setTimeout(function(){
-                                checkAppear($elements, options)
+                                checkAppear($elements, options);
                                 scrollTimer = null
                             },options.minimum_interval) // only check once in 300ms
                         }
@@ -294,7 +294,7 @@
             // Force initial check if images should appear when window onload. 
             $window.on('resize load', function(){
                 checkAppear($elements, options)
-            })
+            });
                   
             // With IOS5 force loading images when navigating with back button. 
             // Non optimal workaround. 
@@ -309,9 +309,9 @@
             // Force initial check if images should appear. 
             $(function(){
                 checkAppear($elements, options)
-            })
+            });
             
             return this
         }
     }
-})
+});

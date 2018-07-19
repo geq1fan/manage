@@ -90,7 +90,7 @@ while (itr.hasNext()) {
 		}
 		//检查扩展名
 		String fileExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-		if(!Arrays.<String>asList(extMap.get(dirName).split(",")).contains(fileExt)){
+        if (!Arrays.asList(extMap.get(dirName).split(",")).contains(fileExt)) {
 			out.println(getError("上传文件扩展名是不允许的扩展名。\n只允许" + extMap.get(dirName) + "格式。"));
 			return;
 		}

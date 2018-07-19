@@ -29,7 +29,7 @@ public class RolePermissionServiceImpl extends BaseServiceImpl<RolePermission> i
 
     @Transactional(readOnly = true)
     @Override
-    public List<Long> findListPermissionIdsByRoleId(Long roleId) throws Exception {
+    public List<Long> findListPermissionIdsByRoleId(Long roleId) {
         RolePermission rolePermission = new RolePermission();
         rolePermission.setRoleId(roleId);
         List<RolePermission> rolePermissionList = this.findListByWhere(rolePermission);

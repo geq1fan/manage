@@ -75,11 +75,9 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
 	 * @param servletResponse
 	 * @param o
 	 * @return
-	 * @throws Exception
-	 */
+     */
 	@Override
-	protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o)
-			throws Exception {
+    protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) {
 		return false;
 	}
 

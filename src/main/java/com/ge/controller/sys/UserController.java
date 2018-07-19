@@ -50,7 +50,7 @@ public class UserController extends BaseController {
     @GetMapping(value = "/user")
     public String list(
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-            String username, String startTime, String endTime, ModelMap modelMap) throws Exception {
+            String username, String startTime, String endTime, ModelMap modelMap) {
         try {
             log.debug("分页查询管理员列表参数! pageNum = {}, username = {}, username = {}, startTime = {}, endTime = {}", pageNum, username, startTime, endTime);
             PageInfo<User> pageInfo = userService.findPage(pageNum, PAGESIZE, username, startTime, endTime);

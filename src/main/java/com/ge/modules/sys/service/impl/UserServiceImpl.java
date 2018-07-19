@@ -36,7 +36,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Transactional(readOnly=true)
     @Override
-    public PageInfo<User> findPage(Integer pageNum ,Integer pageSize ,String username, String startTime, String endTime) throws Exception {
+    public PageInfo<User> findPage(Integer pageNum, Integer pageSize, String username, String startTime, String endTime) {
         Example example = new Example(User.class);
         Criteria criteria = example.createCriteria();
         if(StringUtils.isNotEmpty(username)){
@@ -65,7 +65,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public Boolean saveUserAndUserRole(User user, Long roleId) throws Exception{
+    public Boolean saveUserAndUserRole(User user, Long roleId) {
         int count = 0;
         //加密
         user.setPassword(SecureUtil.md5().digestHex(user.getPassword()));
@@ -91,7 +91,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public Boolean updateUserAndUserRole(User user, Long oldRoleId, Long roleId) throws Exception {
+    public Boolean updateUserAndUserRole(User user, Long oldRoleId, Long roleId) {
         int count = 0;
         //加密
         user.setPassword(SecureUtil.md5().digestHex(user.getPassword()));
