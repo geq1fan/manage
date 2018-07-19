@@ -22,5 +22,5 @@
         ORDER BY
             pi.productline_name
     </select>
-    
+
 </mapper>

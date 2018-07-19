@@ -38,19 +38,6 @@ spring:
       # 合并多个DruidDataSource的监控数据
       #useGlobalDataSourceStat: true
 
-      #Druid监控web配置
-      web-stat-filter:
-        url-pattern: /*
-#        exclusions: *.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
-      stat-view-servlet:
-        url-pattern: /admin/sys/monitor/druid/*
-        #设置白名单
-#        allow: 
-        #设置黑名单
-        deny:
-        #设置登录查看信息的账号密码
-#        login-username: admin
-#        login-password: admin
   #视图
   mvc:
     view:

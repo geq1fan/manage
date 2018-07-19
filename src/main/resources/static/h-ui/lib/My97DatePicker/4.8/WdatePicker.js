@@ -2,90 +2,92 @@
  * My97 DatePicker 4.8 Beta4
  * License: http://www.my97.net/dp/license.asp
  */
-var $dp,WdatePicker;(function(){var $={
-$langList:[
- {name:"en",charset:"UTF-8"},
- {name:"zh-cn",charset:"gb2312"},
- {name:"zh-tw",charset:"GBK"}],
-$skinList:[
- {name:"default",charset:"gb2312"},
- {name:"whyGreen",charset:"gb2312"},
- {name:"blue",charset:"gb2312"},
- {name:"green",charset:"gb2312"},
- {name:"simple",charset:"gb2312"},
- {name:"ext",charset:"gb2312"},
- {name:"blueFresh",charset:"gb2312"},
- {name:"twoer",charset:"gb2312"},
- {name:"YcloudRed",charset:"gb2312"}],
-$wdate:true,
-$crossFrame:true,
-$preLoad:false,
-$dpPath:"",
-doubleCalendar:false,
-enableKeyboard:true,
-enableInputMask:true,
-autoUpdateOnChanged:null,
-weekMethod:"ISO8601",
-position:{},
-lang:"auto",
-skin:"default",
-dateFmt:"yyyy-MM-dd",
-realDateFmt:"yyyy-MM-dd",
-realTimeFmt:"HH:mm:ss",
-realFullFmt:"%Date %Time",
-minDate:"1900-01-01 00:00:00",
-maxDate:"2099-12-31 23:59:59",
-startDate:"",
-alwaysUseStartDate:false,
-yearOffset:1911,
-firstDayOfWeek:0,
-isShowWeek:false,
-highLineWeekDay:true,
-isShowClear:true,
-isShowToday:true,
-isShowOK:true,
-isShowOthers:true,
-readOnly:false,
-errDealMode:0,
-autoPickDate:null,
-qsEnabled:true,
-autoShowQS:false,
-opposite:false,
-hmsMenuCfg:{H:[1,6],m:[5,6],s:[15,4]},
-opposite:false,
+var $dp, WdatePicker;
+(function () {
+    var $ = {
+        $langList: [
+            {name: "en", charset: "UTF-8"},
+            {name: "zh-cn", charset: "gb2312"},
+            {name: "zh-tw", charset: "GBK"}],
+        $skinList: [
+            {name: "default", charset: "gb2312"},
+            {name: "whyGreen", charset: "gb2312"},
+            {name: "blue", charset: "gb2312"},
+            {name: "green", charset: "gb2312"},
+            {name: "simple", charset: "gb2312"},
+            {name: "ext", charset: "gb2312"},
+            {name: "blueFresh", charset: "gb2312"},
+            {name: "twoer", charset: "gb2312"},
+            {name: "YcloudRed", charset: "gb2312"}],
+        $wdate: true,
+        $crossFrame: true,
+        $preLoad: false,
+        $dpPath: "",
+        doubleCalendar: false,
+        enableKeyboard: true,
+        enableInputMask: true,
+        autoUpdateOnChanged: null,
+        weekMethod: "ISO8601",
+        position: {},
+        lang: "auto",
+        skin: "default",
+        dateFmt: "yyyy-MM-dd",
+        realDateFmt: "yyyy-MM-dd",
+        realTimeFmt: "HH:mm:ss",
+        realFullFmt: "%Date %Time",
+        minDate: "1900-01-01 00:00:00",
+        maxDate: "2099-12-31 23:59:59",
+        startDate: "",
+        alwaysUseStartDate: false,
+        yearOffset: 1911,
+        firstDayOfWeek: 0,
+        isShowWeek: false,
+        highLineWeekDay: true,
+        isShowClear: true,
+        isShowToday: true,
+        isShowOK: true,
+        isShowOthers: true,
+        readOnly: false,
+        errDealMode: 0,
+        autoPickDate: null,
+        qsEnabled: true,
+        autoShowQS: false,
+        opposite: false,
+        hmsMenuCfg: {H: [1, 6], m: [5, 6], s: [15, 4]},
+        opposite: false,
 
-    specialDates: null,
-    specialDays: null,
-    disabledDates: null,
-    disabledDays: null,
-    onpicking: null,
-    onpicked: null,
-    onclearing: null,
-    oncleared: null,
-    ychanging: null,
-    ychanged: null,
-    Mchanging: null,
-    Mchanged: null,
-    dchanging: null,
-    dchanged: null,
-    Hchanging: null,
-    Hchanged: null,
-    mchanging: null,
-    mchanged: null,
-    schanging: null,
-    schanged: null,
-    eCont: null,
-    vel: null,
-    elProp: "",
-    errMsg: "",
-    quickSel: [],
-    has: {},
-    getRealLang: function () {
-        var _ = $.$langList;
-        for (var A = 0; A < _.length; A++) if (_[A].name == this.lang) return _[A];
-        return _[0]
-    }
-};
+        specialDates: null,
+        specialDays: null,
+        disabledDates: null,
+        disabledDays: null,
+        onpicking: null,
+        onpicked: null,
+        onclearing: null,
+        oncleared: null,
+        ychanging: null,
+        ychanged: null,
+        Mchanging: null,
+        Mchanged: null,
+        dchanging: null,
+        dchanged: null,
+        Hchanging: null,
+        Hchanged: null,
+        mchanging: null,
+        mchanged: null,
+        schanging: null,
+        schanged: null,
+        eCont: null,
+        vel: null,
+        elProp: "",
+        errMsg: "",
+        quickSel: [],
+        has: {},
+        getRealLang: function () {
+            var _ = $.$langList;
+            for (var A = 0; A < _.length; A++) if (_[A].name == this.lang) return _[A];
+            return _[0]
+        }
+    };
     WdatePicker = U;
     var Y = window, T = {innerHTML: ""}, N = "document", H = "documentElement", C = "getElementsByTagName", V, A, S, G,
         c, X = navigator.appName;
@@ -320,7 +322,8 @@ opposite:false,
                 $dp.status = 1;
                 L.el = T;
                 I(L, true)
-            } else } else if (L.eCont) {
+            } else return
+        } else if (L.eCont) {
             L.eCont = $dp.$(L.eCont);
             L.el = T;
             L.autoPickDate = true;
@@ -460,4 +463,4 @@ opposite:false,
             J.dd.style.left = H + "px"
         }
     }
-})();
+})()

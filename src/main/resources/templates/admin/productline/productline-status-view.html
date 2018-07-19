@@ -1,15 +1,58 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/common/common}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/common/common}">
 
 <head>
     <title>查看生产线历史数据详情</title>
 </head>
 
 <body layout:fragment="content">
-    <article class="page-container">
-        
-    </article>
+<article class="page-container">
+    <input type="hidden" th:value="${productlineName}" id="productlineName"/>
+    <div id="psLine" style="height:600px;"></div>
+</article>
+<script type="text/javascript" th:src="@{/js/lib/echarts.js}"></script>
+<script th:inline="javascript">
+    //后台传来的option的xAxis和yAxis写成了xaxis和yaxis
+    //导致echarts无法解析option
+    //因此需要转换一下
+    function change(json) {
+        var newJson = {};
+        var jsonKeys = Object.keys(json);
+        for (var i = 0; i < jsonKeys.length; i++) {
+            if (jsonKeys[i] === 'yaxis') {
+                newJson['yAxis'] = json[jsonKeys[i]];
+            }
+            else if (jsonKeys[i] === 'xaxis') {
+                newJson['xAxis'] = json[jsonKeys[i]];
+            } else {
+                newJson[jsonKeys[i]] = json[jsonKeys[i]];
+            }
+        }
+        return newJson;
+    }
 
+    //图表
+    var psLineChar = echarts.init(document.getElementById('psLine'));
+
+    //查询
+    function loadDrugs() {
+        psLineChar.clear();
+        psLineChar.showLoading({text: '正在努力的读取数据中...'});
+        var productlineName = $("#productlineName").val();
+        $.getJSON(productlineName + '/view', function (data) {
+            if (data.status === "success") {
+                psLineChar.setOption(change(data.option), true);
+                psLineChar.hideLoading();
+            } else {
+                alert('提示', data.msg);
+            }
+        });
+    }
+
+    //载入图表
+    loadDrugs();
+</script>
 </body>
 
 </html>
