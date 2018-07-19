@@ -1,83 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="477f339e-3fd7-49b0-9257-b507a44911b0" name="Default" comment="">
+    <list default="true" id="477f339e-3fd7-49b0-9257-b507a44911b0" name="Default" comment="进行了代码清理">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/common/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/common/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/common/aop/OperationLogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/common/aop/OperationLogAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/common/interceptor/FormTokenInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/common/interceptor/FormTokenInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/common/security/xss/XssFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/common/security/xss/XssFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/controller/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/controller/order/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/controller/sys/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/controller/sys/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/controller/sys/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/controller/sys/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/inventory/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/inventory/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/order/service/OrderProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/order/service/OrderProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/order/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/order/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/order/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/schedule/service/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/schedule/service/ScheduleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/service/impl/RolePermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/service/impl/RolePermissionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/shiro/filter/KickoutSessionControlFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/shiro/filter/KickoutSessionControlFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/shiro/filter/LoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/modules/sys/shiro/filter/LoginFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ge/util/SpringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ge/util/SpringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/WdatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/WdatePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/lang/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/lang/en.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/lang/zh-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/lang/zh-cn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/lang/zh-tw.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/My97DatePicker/4.8/lang/zh-tw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/hcharts/Highcharts/5.0.6/js/modules/gantt.src.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/hcharts/Highcharts/5.0.6/js/modules/gantt.src.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/hcharts/Highcharts/5.0.6/js/modules/grid-axis.src.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/hcharts/Highcharts/5.0.6/js/modules/grid-axis.src.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/jquery.validation/1.14.0/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/jquery.validation/1.14.0/jquery.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/jselect-1.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/jselect-1.0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/kindeditor-4.1.7/asp.net/demo.aspx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/kindeditor-4.1.7/asp.net/demo.aspx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/kindeditor-4.1.7/jsp/file_manager_json.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/kindeditor-4.1.7/jsp/file_manager_json.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/kindeditor-4.1.7/jsp/upload_json.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/kindeditor-4.1.7/jsp/upload_json.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/lazyload/lazyload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/lazyload/lazyload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/squid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/squid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/attachment/attachment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/attachment/attachment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/background/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/background/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/charts/charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/charts/charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/preview/preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/preview/preview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/searchreplace/searchreplace.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/searchreplace/searchreplace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/video/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/video/video.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/wordimage/tangram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/dialogs/wordimage/tangram.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/codemirror/codemirror.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/codemirror/codemirror.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/highcharts/highcharts.src.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/highcharts/highcharts.src.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/highcharts/modules/canvas-tools.src.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/highcharts/modules/canvas-tools.src.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/video-js/video.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/video-js/video.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/webuploader/webuploader.custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/webuploader/webuploader.custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/webuploader/webuploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/third-party/webuploader/webuploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/ueditor.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/ueditor/1.4.3/ueditor.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/cropper/uploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/cropper/uploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/image-upload/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/image-upload/upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.fis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.fis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.nolog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/webuploader/0.1.5/webuploader.nolog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/api/apiCss/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/api/apiCss/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.all-3.5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.all-3.5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.core-3.5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.core-3.5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.excheck-3.5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.excheck-3.5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.exedit-3.5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.exedit-3.5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.exedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.exedit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.exhide-3.5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/lib/zTree/v3/js/jquery.ztree.exhide-3.5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/static/h-ui.admin/js/H-ui.admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/static/h-ui.admin/js/H-ui.admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/h-ui/static/h-ui/js/H-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/h-ui/static/h-ui/js/H-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/common/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/lib/treegrid/jquery.treegrid.extension.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/lib/treegrid/jquery.treegrid.extension.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/common/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/common/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/common/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/common/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/inventory/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/inventory/inventory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/log/log-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/log/log-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/manager/admin-permission.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/manager/admin-permission.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/manager/admin-role.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/manager/admin-role.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/manager/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/manager/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/order/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/order/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/productline/productline-history.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/productline/productline-history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/productline/productline-status.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/productline/productline-status.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/schedule/order/schedule-order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/schedule/order/schedule-order.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
@@ -136,8 +61,8 @@
       <file leaf-file-name="OrderController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ge/controller/order/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+            <state relative-caret-position="618">
+              <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -189,6 +114,11 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="qifan ge &lt;304171458@qq.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -647,8 +577,23 @@
       <workItem from="1531828261168" duration="471000" />
       <workItem from="1531828786212" duration="6174000" />
       <workItem from="1531877297516" duration="471000" />
-      <workItem from="1531877907740" duration="36055000" />
+      <workItem from="1531877907740" duration="36559000" />
     </task>
+    <task id="LOCAL-00001" summary="进行了代码清理">
+      <created>1531964956570</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531964956570</updated>
+    </task>
+    <task id="LOCAL-00002" summary="进行了代码清理">
+      <created>1531965459765</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531965459765</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -657,7 +602,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55616000" />
+    <option name="totallyTimeSpent" value="56120000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -745,6 +690,12 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="进行了代码清理" />
+    <option name="LAST_COMMIT_MESSAGE" value="进行了代码清理" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="23" />
@@ -755,24 +706,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="uml://JavaScript-modules-diagram/C:/Users/Ge/Desktop/SpringBoot学习/manage/src/main/resources/templates/admin/order/order.html">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JavaScript-modules-diagram</ID>
-          <OriginalElement>$PROJECT_DIR$/src/main/resources/templates/admin/order/order.html</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="588.0" y="203.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>All</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>Details</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/h-ui/lib/Hui-iconfont/1.0.8/demo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-378" />
@@ -1117,10 +1050,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-945" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ge/controller/order/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+        <state relative-caret-position="618">
+          <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
         </state>
       </provider>
     </entry>
