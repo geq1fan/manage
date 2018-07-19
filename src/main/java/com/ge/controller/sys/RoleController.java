@@ -148,7 +148,7 @@ public class RoleController extends BaseController{
 
     /**
      * 更新角色信息
-     * @param id
+     * @param roleId
      * @param role
      * @return
      */
@@ -198,14 +198,13 @@ public class RoleController extends BaseController{
      * @param roleId
      * @param permissionIds
      * @return
-     * @throws Exception
      */
     @FormToken(remove = true)
     @OperationLog(value = "角色授权")
     @RequiresPermissions("role:permission")
     @ResponseBody
     @PutMapping("/{roleId}/permission")
-    public ModelMap rolePermission(@PathVariable("roleId")Long roleId, @Size(message = "请至少选择一个", min = 1) Long[] permissionIds) throws Exception {
+    public ModelMap rolePermission(@PathVariable("roleId") Long roleId, @Size(message = "请至少选择一个", min = 1) Long[] permissionIds) {
         ModelMap messagesMap = new ModelMap();
 
         rolePermissionService.saveOrUpdate(roleId, permissionIds);
