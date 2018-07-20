@@ -28,5 +28,27 @@ public interface ProductlineService extends BaseService<ProductlineInfo> {
      */
     List<ProductlineInfo> findNewestHistoryData();
 
-    Option selectRemoveCauses(String productlineName);
+    /**
+     * 根据生产线名称返回熔窑压力实时数据
+     *
+     * @param productlineName
+     * @return
+     */
+    Option selectProductlinePress(String productlineName);
+
+    /**
+     * 根据生产线名称返回熔窑温度实时数据
+     *
+     * @param productlineName
+     * @return
+     */
+    Option selectProductlineTemp(String productlineName);
+
+    /**
+     * 根据生产线名称返回熔窑液面高度实时数据
+     *
+     * @param productlineName
+     * @return
+     */
+    Option selectProductlineHeight(String productlineName);
 }

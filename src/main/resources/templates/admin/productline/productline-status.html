@@ -22,6 +22,14 @@
 </nav>
 <form id="myForm" th:action="@{/admin/productline/status}" th:method="get">
     <div class="page-container">
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
+                <span class="l" style="margin: 0 5px 0 0;">
+                    <a href="javascript:" onclick=""
+                       th:onclick="'javascript:productline_set(\'设置生产参数\',\'/admin/productline/set\',\'800\',\'500\');'"
+                       class="btn btn-primary radius">
+                        <i class="Hui-iconfont">&#xe6c6;</i> 设置生产参数</a>
+                </span>
+        </div>
         <table class="table table-border table-bordered table-bg table-hover">
             <thead>
             <tr>
@@ -32,8 +40,10 @@
                 <th>生产线名称</th>
                 <th>客户端连接状态</th>
                 <th>生产线运行状态</th>
+                <th>熔窑压力</th>
+                <th>熔窑温度</th>
+                <th>熔窑液面高度</th>
                 <th>时间</th>
-                <th width="100">详情</th>
             </tr>
             </thead>
             <tbody>
@@ -48,14 +58,28 @@
                     <span class="label radius label-success" th:if="*{isProductlineRun} == true">正常</span>
                     <span class="label radius label-danger" th:unless="*{isProductlineRun} == true">异常</span>
                 </td>
-                <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
-                <td class="td-manage">
-                    <a title="详情" href="javascript:" onclick="system_log_show(this,'10001')"
-                       th:onclick="'javascript:status_view(\''+*{productlineName}+'运行状态详情\', \'/admin/productline/status/'+*{productlineName}+'\',\'800\',\'500\');'"
+                <td class="td-view">
+                    <a title="压力" href="javascript:" onclick="system_log_show(this,'10001')"
+                       th:onclick="'javascript:status_view(\''+*{productlineName}+'运行状态详情\', \'/admin/productline/status/'+*{productlineName}+'?type=press'+'\',\'800\',\'500\');'"
                        class="ml-5" style="text-decoration:none">
                         <i class="Hui-iconfont">&#xe725;</i>
                     </a>
                 </td>
+                <td class="td-view">
+                    <a title="温度" href="javascript:" onclick="system_log_show(this,'10001')"
+                       th:onclick="'javascript:status_view(\''+*{productlineName}+'运行状态详情\', \'/admin/productline/status/'+*{productlineName}+'?type=temp'+'\',\'800\',\'500\');'"
+                       class="ml-5" style="text-decoration:none">
+                        <i class="Hui-iconfont">&#xe725;</i>
+                    </a>
+                </td>
+                <td class="td-view">
+                    <a title="液面高度" href="javascript:" onclick="system_log_show(this,'10001')"
+                       th:onclick="'javascript:status_view(\''+*{productlineName}+'运行状态详情\', \'/admin/productline/status/'+*{productlineName}+'?type=height'+'\',\'800\',\'500\');'"
+                       class="ml-5" style="text-decoration:none">
+                        <i class="Hui-iconfont">&#xe725;</i>
+                    </a>
+                </td>
+                <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
             </tr>
             </tbody>
         </table>

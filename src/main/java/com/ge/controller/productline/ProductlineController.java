@@ -48,19 +48,69 @@ public class ProductlineController extends BaseController {
      */
     @RequiresPermissions("productline:view")
     @GetMapping("/status/{productlineName}")
-    public String viewProductline(@PathVariable("productlineName") String productlineName, ModelMap modelMap) {
+    public String viewProductline(@PathVariable("productlineName") String productlineName,
+                                  @RequestParam("type") String type, ModelMap modelMap) {
         modelMap.put("productlineName", productlineName);
+        modelMap.put("type", type);
         return BASE_PATH + "productline-status-view";
     }
 
+    /**
+     * 查看生产线熔窑压力实时数据
+     *
+     * @param productlineName
+     * @return
+     */
     @ResponseBody
-    @GetMapping("/status/{productlineName}/view")
-    public ModelMap viewProductlineStatus(@PathVariable("productlineName") String productlineName) {
+    @GetMapping("/status/{productlineName}/press")
+    public ModelMap viewPressStatus(@PathVariable("productlineName") String productlineName) {
         ModelMap modelMap = new ModelMap();
         try {
-            Option option = productlineService.selectRemoveCauses(productlineName);
+            Option option = productlineService.selectProductlinePress(productlineName);
             modelMap.put("status", SUCCESS);
-            modelMap.put("model", option);
+            modelMap.put("option", option);
+        } catch (Exception e) {
+            log.error("根据生产线名称取出option失败，productlineName={}", productlineName);
+        }
+
+        return modelMap;
+    }
+
+    /**
+     * 查看生产线熔窑温度实时数据
+     *
+     * @param productlineName
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/status/{productlineName}/temp")
+    public ModelMap viewTempStatus(@PathVariable("productlineName") String productlineName) {
+        ModelMap modelMap = new ModelMap();
+        try {
+            Option option = productlineService.selectProductlineTemp(productlineName);
+            modelMap.put("status", SUCCESS);
+            modelMap.put("option", option);
+        } catch (Exception e) {
+            log.error("根据生产线名称取出option失败，productlineName={}", productlineName);
+        }
+
+        return modelMap;
+    }
+
+    /**
+     * 查看生产线熔窑液面高度实时数据
+     *
+     * @param productlineName
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/status/{productlineName}/height")
+    public ModelMap viewHeightStatus(@PathVariable("productlineName") String productlineName) {
+        ModelMap modelMap = new ModelMap();
+        try {
+            Option option = productlineService.selectProductlineHeight(productlineName);
+            modelMap.put("status", SUCCESS);
+            modelMap.put("option", option);
         } catch (Exception e) {
             log.error("根据生产线名称取出option失败，productlineName={}", productlineName);
         }
