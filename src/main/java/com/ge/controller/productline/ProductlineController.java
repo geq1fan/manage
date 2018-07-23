@@ -3,7 +3,9 @@ package com.ge.controller.productline;
 import com.ge.common.aop.OperationLog;
 import com.ge.controller.base.BaseController;
 import com.ge.modules.productline.model.ProductlineInfo;
-import com.ge.modules.productline.service.ProductlineService;
+import com.ge.modules.productline.model.ProductlineParam;
+import com.ge.modules.productline.service.ProductlineInfoService;
+import com.ge.modules.productline.service.ProductlineParamService;
 import com.github.abel533.echarts.Option;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -23,7 +25,29 @@ public class ProductlineController extends BaseController {
     private static final String BASE_PATH = "admin/productline/";
 
     @Resource
-    private ProductlineService productlineService;
+    private ProductlineInfoService productlineInfoService;
+    @Resource
+    private ProductlineParamService productlineParamService;
+
+    @RequiresPermissions("productline:set")
+    @GetMapping(value = {"/set/{productlineName}"})
+    public String setProductline(@PathVariable("productlineName") String productlineName, ModelMap modelMap) {
+        ProductlineParam record = new ProductlineParam();
+        record.setProductlineName(productlineName);
+        ProductlineParam productlineParam = productlineParamService.findOne(record);
+        modelMap.put("model", productlineParam);
+        return BASE_PATH + "productline-param";
+    }
+
+    @ResponseBody
+    @PostMapping("/set")
+    public ModelMap saveProductlineParam(ProductlineParam productlineParam) {
+        ModelMap modelMap = new ModelMap();
+        productlineParamService.update(productlineParam);
+        modelMap.put("status", SUCCESS);
+        modelMap.put("message", "参数设置成功!");
+        return modelMap;
+    }
 
     /**
      * 查看所有生产线状态
@@ -34,7 +58,7 @@ public class ProductlineController extends BaseController {
     @RequiresPermissions("productline:status")
     @GetMapping("/status")
     public String listProductline(ModelMap modelMap) {
-        List<ProductlineInfo> listInfo = productlineService.findNewestHistoryData();
+        List<ProductlineInfo> listInfo = productlineInfoService.findNewestHistoryData();
         modelMap.put("list", listInfo);
         return BASE_PATH + "productline-status";
     }
@@ -66,7 +90,7 @@ public class ProductlineController extends BaseController {
     public ModelMap viewPressStatus(@PathVariable("productlineName") String productlineName) {
         ModelMap modelMap = new ModelMap();
         try {
-            Option option = productlineService.selectProductlinePress(productlineName);
+            Option option = productlineInfoService.selectProductlinePress(productlineName);
             modelMap.put("status", SUCCESS);
             modelMap.put("option", option);
         } catch (Exception e) {
@@ -87,7 +111,7 @@ public class ProductlineController extends BaseController {
     public ModelMap viewTempStatus(@PathVariable("productlineName") String productlineName) {
         ModelMap modelMap = new ModelMap();
         try {
-            Option option = productlineService.selectProductlineTemp(productlineName);
+            Option option = productlineInfoService.selectProductlineTemp(productlineName);
             modelMap.put("status", SUCCESS);
             modelMap.put("option", option);
         } catch (Exception e) {
@@ -108,7 +132,7 @@ public class ProductlineController extends BaseController {
     public ModelMap viewHeightStatus(@PathVariable("productlineName") String productlineName) {
         ModelMap modelMap = new ModelMap();
         try {
-            Option option = productlineService.selectProductlineHeight(productlineName);
+            Option option = productlineInfoService.selectProductlineHeight(productlineName);
             modelMap.put("status", SUCCESS);
             modelMap.put("option", option);
         } catch (Exception e) {
@@ -135,7 +159,7 @@ public class ProductlineController extends BaseController {
         try {
             log.debug("分页查询生产线历史数据参数! pageNum = {}, productlineName = {}, startTime = {}, endTime = {}", pageNum,
                     productlineName, startTime, endTime);
-            PageInfo<ProductlineInfo> pageInfo = productlineService.findHistoryDataPage(pageNum, PAGESIZE, productlineName,
+            PageInfo<ProductlineInfo> pageInfo = productlineInfoService.findHistoryDataPage(pageNum, PAGESIZE, productlineName,
                     startTime, endTime);
             log.info("分页查询生产线历史数据结果！ pageInfo = {}", pageInfo);
             modelMap.put("pageInfo", pageInfo);
@@ -158,7 +182,7 @@ public class ProductlineController extends BaseController {
     @RequiresPermissions("productline:view")
     @GetMapping("/history/{id}")
     public String viewHistoryData(@PathVariable("id") Long id, ModelMap modelMap) {
-        ProductlineInfo productlineInfo = productlineService.findById(id);
+        ProductlineInfo productlineInfo = productlineInfoService.findById(id);
         modelMap.put("model", productlineInfo);
 
         return BASE_PATH + "productline-history-view";
@@ -177,7 +201,7 @@ public class ProductlineController extends BaseController {
         try {
             log.debug("删除生产线历史数据! id = {}", id);
 
-            productlineService.deleteById(id);
+            productlineInfoService.deleteById(id);
             log.info("删除生产线历史数据! id = {}", id);
 
             return ResponseEntity.ok("已删除!");
@@ -204,7 +228,7 @@ public class ProductlineController extends BaseController {
                 log.info("批量删除生产线历史数据不存在! ids = {}", ids);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
-            productlineService.deleteByCondition(ProductlineInfo.class, "id", ids);
+            productlineInfoService.deleteByCondition(ProductlineInfo.class, "id", ids);
             log.info("批量删除生产线历史数据成功! ids = {}", ids);
 
             return ResponseEntity.ok("已删除!");

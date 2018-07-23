@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/common/common}">
+
+<head>
+    <title>设置生产参数</title>
+</head>
+
+<body layout:fragment="content">
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-productline-set" th:object="${model}">
+        <input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}"/>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">生产线名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="onfocus=this.blur()" onfocus="this.blur()" placeholder=""
+                       id="productlineName" name="productlineName" th:name="productlineName"
+                       th:value="*{productlineName}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>工作部温度：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="workTemp" name="workTemp" th:name="workTemp"
+                       th:value="*{workTemp}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>熔化部温度：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="meltTemp" name="meltTemp" th:name="meltTemp"
+                       th:value="*{meltTemp}"
+                />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>熔窑压力：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="pressure" name="pressure"
+                       th:name="pressure" th:value="*{pressure}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>液面高度：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="liquidLevel" name="liquidLevel"
+                       th:name="liquidLevel" th:value="*{liquidLevel}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>温度允许误差：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="tempDeviation" name="tempDeviation"
+                       th:name="tempDeviation" th:value="*{tempDeviation}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>压力允许误差：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="pressureDeviation"
+                       name="pressureDeviation" th:name="pressureDeviation" th:value="*{pressureDeviation}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>高度允许误差：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="heightDeviation"
+                       name="heightDeviation" th:name="heightDeviation" th:value="*{heightDeviation}"/>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-success radius" id="admin-role-save">
+                    <i class="icon-ok"></i> 确定
+                </button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<script type="text/javascript" th:src="@{/js/admin/productline/productline-param.js}"></script>
+</body>
+
+</html>
