@@ -5,18 +5,13 @@ $(function () {
         increaseArea: '20%'
     });
 
-    $("#form-inventory-edit").validate({
+    $("#form-inventory-add").validate({
         rules: {
-            name: {
-                required: true
-            },
             type: {
-                required: true
+                required: true,
+
             },
-            location: {
-                required: true
-            },
-            repository: {
+            name: {
                 required: true
             },
             category: {
@@ -31,8 +26,8 @@ $(function () {
         success: "valid",
         submitHandler: function (form) {
             $(form).ajaxSubmit({
-                type: 'PUT',
-                url: "/admin/inventory/product/" + $("#pid").val(),
+                type: 'post',
+                url: "/admin/inventory",
                 dataType: "json",
                 success: function (data) {
                     if (data.status == "success") {

@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/common/common}">
 
 <head>
-	<title>产品出库</title>
+	<title>产品入库</title>
 </head>
 
 <body layout:fragment="content">
 	<article class="page-container">
-		<form action="" method="put" class="form form-horizontal" id="form-inventory-edit" th:object="${model}">
+        <form action="" method="post" class="form form-horizontal" id="form-inventory-add">
 			<input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}" />
-			<input type="hidden" th:value="*{id}" th:id="pid" />
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3">
 					<span class="c-red">*</span>产品名称：</label>
@@ -26,7 +25,21 @@
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3">
-					<span class="c-red">*</span>产品剩余库存：</label>
+					<span class="c-red">*</span>产品类别：</label>
+				<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+					<div class="radio-box">
+						<input type="radio" id="category-1" checked="checked" th:name="category" th:value="1" />
+						<label for="category-1">成品</label>
+					</div>
+					<div class="radio-box">
+						<input type="radio" id="category-2" th:name="category" th:value="0" />
+						<label for="category-2">原料</label>
+					</div>
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">
+					<span class="c-red">*</span>产品入库量：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" value="" placeholder="" id="inventory" name="inventory" th:name="inventory" th:value="*{inventory}"
 					/>
@@ -34,7 +47,7 @@
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3">
-					<span class="c-red">*</span>所处库房：</label>
+					<span class="c-red">*</span>放入库房：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" value="" placeholder="" id="location" name="location" th:name="location" th:value="*{location}"
 					/>
@@ -42,7 +55,7 @@
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3">
-					<span class="c-red">*</span>所处库位：</label>
+					<span class="c-red">*</span>放入库位：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" value="" placeholder="" id="repository" name="repository" th:name="repository" th:value="*{repository}"
 					/>
@@ -51,14 +64,14 @@
 
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-					<button type="submit" class="btn btn-success radius" id="" name="">
+					<button type="submit" class="btn btn-success radius" id="admin-role-save">
 						<i class="icon-ok"></i> 确定</button>
 				</div>
 			</div>
 		</form>
 	</article>
 
-	<script type="text/javascript" th:src="@{/js/admin/inventory/inventory-product-edit.js}"></script>
+    <script type="text/javascript" th:src="@{/js/admin/inventory/inventory-add.js}"></script>
 </body>
 
 </html>

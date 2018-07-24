@@ -3,7 +3,7 @@
       layout:decorate="~{admin/common/common}">
 
 <head>
-    <title>订单生产调度</title>
+    <title>库存生产调度</title>
 </head>
 
 <body layout:fragment="content">
@@ -13,55 +13,61 @@
     <span class="c-gray en">&gt;</span>
     调度管理
     <span class="c-gray en">&gt;</span>
-    订单生产调度
+    库存生产调度
     <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
        href="javascript:location.replace(location.href);"
        title="刷新">
         <i class="Hui-iconfont">&#xe68f;</i>
     </a>
 </nav>
-<form id="myForm" th:action="@{/admin/schedule/order}" th:method="get">
+<form id="myForm" th:action="@{/admin/schedule/inventory}" th:method="get">
     <div class="page-container">
+        <div class="text-c">
+            <input type="text" class="input-text" style="width:250px" placeholder="输入产品规格" name="productType"
+                   th:value="${productType}"
+            />
+            <button type="submit" class="btn btn-success">
+                <i class="Hui-iconfont">&#xe665;</i>
+                搜索
+            </button>
+        </div>
         <div class="cl pd-5 bg-1 bk-gray mt-20">
+            <span class="l" style="margin: 0 5px 0 0;">
+                <a href="javascript:"
+                   th:onclick="'javascript:schedule_inventory_predict(\'需求预测\',\'/admin/schedule/inventory/predict\',\'800\',\'500\');'"
+                   class="btn btn-primary radius">
+                    <i class="Hui-iconfont">&#xe61e;</i> 需求预测</a>
+            </span>
             <span class="l">
                 <a href="javascript:"
-                   th:onclick="'javascript:order_schedule(\'订单生产调度\',\'/admin/schedule/order\',\'800\',\'500\');'"
+                   th:onclick="'javascript:inventory_schedule(\'库存生产调度\',\'/admin/schedule/inventory\',\'800\',\'500\');'"
                    class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6ab;</i> 进行生产调度</a>
             </span>
             <span class="r">共有数据：
-                <strong th:text="${pageInfo?.total}" id="total">54</strong> 条</span>
+                    <strong th:text="${pageInfo?.total}" id="total">54</strong> 条</span>
         </div>
         <table class="table table-border table-bordered table-bg table-hover">
             <thead>
             <tr>
-                <th scope="col" colspan="12">待处理订单列表</th>
+                <th scope="col" colspan="12">产品库存列表</th>
             </tr>
             <tr class="text-c">
                 <th width="25"><input type="checkbox" name="" value=""/></th>
                 <th>序号</th>
                 <th>产品名称</th>
                 <th>产品规格</th>
-                <th>产品价格</th>
-                <th>订购数量</th>
-                <th>交货日期</th>
-                <th>逾期罚金</th>
-                <th>审核人</th>
-                <th width="120">订单创建时间</th>
+                <th>产品库存</th>
+                <th>最后更新时间</th>
             </tr>
             </thead>
             <tbody>
             <tr class="text-c" th:each="model:${pageInfo?.list}" th:object="${model}">
                 <td><input type="checkbox" th:value="*{id}"/></td>
                 <td th:text="${((pageInfo?.pageNum - 1) * pageInfo?.pageSize) + modelStat.count}">d</td>
-                <td th:text="*{name}">d</td>
-                <td th:text="*{type}">d</td>
-                <td th:text="*{price}">d</td>
-                <td th:text="*{amount}">d</td>
-                <td th:text="*{deadline}">d</td>
-                <td th:text="*{penalty}">d</td>
-                <td th:text="*{verifier}">d</td>
-                <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
-            </tr>
+                <td th:text="*{name}">2</td>
+                <td th:text="*{type}">3</td>
+                <td th:text="*{inventory}"></td>
+                <td th:text="*{#dates.format(modifyTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
             </tbody>
         </table>
         <div th:replace="admin/common/page :: page"></div>
@@ -70,7 +76,7 @@
 
 <script type="text/javascript" th:src="@{/js/common/page.js}"></script>
 <script type="text/javascript" th:src="@{/js/common/common.js}"></script>
-<script type="text/javascript" th:src="@{/js/admin/schedule/order/schedule-order.js}"></script>
+<script type="text/javascript" th:src="@{/js/admin/schedule/inventory/schedule-inventory.js}"></script>
 <script th:inline="javascript">
 
 </script>

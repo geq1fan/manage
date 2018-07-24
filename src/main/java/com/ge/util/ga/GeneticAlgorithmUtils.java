@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GeneticAlgorithmUtils {
-    /**
-     * 基因长度
-     */
-    private static final int GENE_LENGTH = 10;
+
     /**
      * 种群数量
      */
@@ -82,7 +79,7 @@ public class GeneticAlgorithmUtils {
     }
 
     public static List<Long> calculate(List<OrderInfo> orderInfos, int changeCost, int lineNum, int linePower) {
-        GeneticAlgorithm test = new GeneticAlgorithm(GENE_LENGTH, POP_SIZE, MAX_ITER_NUM, CROSS_RATE, MUTATION_RATE);
+        GeneticAlgorithm test = new GeneticAlgorithm(orderInfos.size(), POP_SIZE, MAX_ITER_NUM, CROSS_RATE, MUTATION_RATE);
         int[][] orderInfo = transferOrderInfo(orderInfos);
         test.setOrderInfo(orderInfo);
         test.setChangeCost(changeCost);

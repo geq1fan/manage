@@ -252,7 +252,7 @@ class GeneticAlgorithm {
         }
 
         int productionCount = 0;
-        for (int i = 1, j = 0; j < 10; i++) {
+        for (int i = 1, j = 0; j < geneSize; i++) {
             productionCount += linePower;
             int num = orderSeq[j];
             if (productionCount >= getOrderAmount(num)) {

@@ -7,7 +7,7 @@
 
 <body layout:fragment="content">
 	<article class="page-container">
-		<form action="" method="post" class="form form-horizontal" id="form-inventory-product-add">
+        <form action="" method="post" class="form form-horizontal" id="form-inventory-inventory-add">
 			<input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}" />
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3">
@@ -51,7 +51,7 @@
 		</form>
 	</article>
 
-	<script type="text/javascript" th:src="@{/js/admin/order/order-product-add.js}"></script>
+    <script type="text/javascript" th:src="@{/js/admin/order/order-inventory-add.js}"></script>
 </body>
 
 </html>

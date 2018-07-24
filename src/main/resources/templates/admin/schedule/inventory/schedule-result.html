@@ -10,34 +10,21 @@
 <article class="page-container">
     <form action="" method="post" class="form form-horizontal" id="form-order-add" th:object="${model}">
         <input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}"/>
-        <input type="hidden" th:name="result" th:value="${result}"/>
-        <input type="hidden" th:name="ids" th:value="${ids}"/>
+        <input type="hidden" th:name="id" th:value="${id}"/>
         <table class="table table-border table-bordered table-bg table-hover">
             <thead>
             <tr>
                 <th scope="col" colspan="12">调度结果</th>
             </tr>
             <tr class="text-c">
-                <th>序号</th>
-                <th>产品名称</th>
-                <th>产品规格</th>
-                <th>产品价格</th>
-                <th>订购数量</th>
-                <th>交货日期</th>
-                <th>逾期罚金</th>
-                <th>订单创建时间</th>
+                <th>生产线名称</th>
+                <th>库存生产调度</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="text-c" th:each="model:${pageInfo?.list}" th:object="${model}">
-                <td th:text="${((pageInfo?.pageNum - 1) * pageInfo?.pageSize) + modelStat.count}">d</td>
-                <td th:text="*{name}">d</td>
-                <td th:text="*{type}">d</td>
-                <td th:text="*{price}">d</td>
-                <td th:text="*{amount}">d</td>
-                <td th:text="*{deadline}">d</td>
-                <td th:text="*{penalty}">d</td>
-                <td th:text="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
+            <tr class="text-c" th:each="model:${models}" th:object="${model}">
+                <td th:text="*{productline}">d</td>
+                <td th:text="*{result}">d</td>
             </tr>
             </tbody>
         </table>
@@ -67,7 +54,7 @@
     </form>
 </article>
 
-<script type="text/javascript" th:src="@{/js/admin/schedule/order/schedule-result.js}"></script>
+<script type="text/javascript" th:src="@{/js/admin/schedule/inventory/schedule-result.js}"></script>
 </body>
 
 </html>

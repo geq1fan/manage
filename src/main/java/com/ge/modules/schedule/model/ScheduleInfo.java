@@ -1,7 +1,6 @@
 package com.ge.modules.schedule.model;
 
 import com.ge.common.model.BaseEntity;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -24,7 +23,7 @@ public class ScheduleInfo extends BaseEntity {
 	/**
      * 待生产的生产线id
      */
-	private Integer productlineId;
+    private String productline;
 	/**
      * 是否提交
      */

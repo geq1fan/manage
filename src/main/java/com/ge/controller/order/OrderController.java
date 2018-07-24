@@ -3,9 +3,9 @@ package com.ge.controller.order;
 import com.ge.common.interceptor.FormToken;
 import com.ge.controller.base.BaseController;
 import com.ge.modules.order.model.OrderInfo;
-import com.ge.modules.order.model.OrderProduct;
-import com.ge.modules.order.service.OrderProductService;
+import com.ge.modules.order.model.Product;
 import com.ge.modules.order.service.OrderService;
+import com.ge.modules.order.service.ProductService;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ public class OrderController extends BaseController {
     @Resource
     private OrderService orderService;
     @Resource
-    private OrderProductService orderProductService;
+    private ProductService orderProductService;
 
     /**
      * 根据是否审核分页查询订单列表
@@ -121,7 +121,7 @@ public class OrderController extends BaseController {
     public String manageProduct(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                 String productType, ModelMap modelMap) {
         try {
-            PageInfo<OrderProduct> pageInfo = orderProductService.findProductPage(pageNum, PAGESIZE, productType);
+            PageInfo<Product> pageInfo = orderProductService.findProductPage(pageNum, PAGESIZE, productType);
             log.info("分页查询产品列表结果！ pageInfo = {}", pageInfo);
             modelMap.put("pageInfo", pageInfo);
             modelMap.put("productType", productType);
@@ -161,8 +161,8 @@ public class OrderController extends BaseController {
     @FormToken(save = true)
     @GetMapping("/add/{id}")
     public String addOrder(@PathVariable("id") Long id, ModelMap modelMap) {
-        OrderProduct orderProduct = orderProductService.findById(id);
-        modelMap.put("model", orderProduct);
+        Product product = orderProductService.findById(id);
+        modelMap.put("model", product);
         return BASE_PATH + "order-add";
     }
 
@@ -195,8 +195,8 @@ public class OrderController extends BaseController {
     @FormToken(save = true)
     @GetMapping("/product/edit/{id}")
     public String editProductInformation(@PathVariable("id") Long id, ModelMap modelMap) {
-        OrderProduct orderProduct = orderProductService.findById(id);
-        modelMap.put("model", orderProduct);
+        Product product = orderProductService.findById(id);
+        modelMap.put("model", product);
         return BASE_PATH + "order-product-edit";
     }
 
@@ -204,18 +204,18 @@ public class OrderController extends BaseController {
      * 更新产品信息
      *
      * @param id
-     * @param orderProduct
+     * @param product
      * @return
      */
     @RequiresPermissions("product:edit")
     @FormToken(remove = true)
     @ResponseBody
     @PutMapping(value = "/product/{id}")
-    public ModelMap updateProductInformation(@PathVariable("id") Long id, OrderProduct orderProduct) {
+    public ModelMap updateProductInformation(@PathVariable("id") Long id, Product product) {
         ModelMap modelMap = new ModelMap();
-        orderProduct.setId(id);
-        orderProductService.updateSelective(orderProduct);
-        log.info("编辑产品信息成功! orderProductId= {}, orderProduct = {}", id, orderProduct);
+        product.setId(id);
+        orderProductService.updateSelective(product);
+        log.info("编辑产品信息成功! orderProductId= {}, product = {}", id, product);
         modelMap.put("status", SUCCESS);
         modelMap.put("message", "编辑成功!");
         return modelMap;
@@ -237,10 +237,10 @@ public class OrderController extends BaseController {
     @ResponseBody
     @FormToken(remove = true)
     @PostMapping("/product")
-    public ModelMap saveProductInformation(OrderProduct orderProduct) {
+    public ModelMap saveProductInformation(Product product) {
         ModelMap modelMap = new ModelMap();
-        orderProductService.save(orderProduct);
-        log.info("添加产品信息成功! orderProductId = {}", orderProduct.getId());
+        orderProductService.save(product);
+        log.info("添加产品信息成功! orderProductId = {}", product.getId());
         modelMap.put("status", SUCCESS);
         modelMap.put("message", "添加成功!");
         return modelMap;

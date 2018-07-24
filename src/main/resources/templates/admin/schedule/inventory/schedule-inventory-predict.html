@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/common/common}">
+
+<head>
+    <title>创建订单</title>
+</head>
+
+<body layout:fragment="content">
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-inventory-predict" th:object="${model}">
+        <input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}"/>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">产品名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="name" name="name"
+                       th:name="name"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">产品规格：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="type" name="type" th:name="type"
+                />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">近几个月的销售数据：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="" id="period" name="period" th:name="period"/>
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-success radius" id="admin-role-save">
+                    <i class="icon-ok"></i> 确定
+                </button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<script type="text/javascript" th:src="@{/js/admin/schedule/inventory/schedule-inventory-predict.js}"></script>
+</body>
+
+</html>
