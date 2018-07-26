@@ -11,20 +11,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
 public class OrderServiceImpl extends BaseServiceImpl<OrderInfo> implements OrderService {
 
+    /**
+     * 根据status分页查询订单列表
+     *
+     * @param pageNum
+     * @param pageSize
+     * @param startTime
+     * @param endTime
+     * @param status
+     * @return
+     */
     @Transactional(readOnly = true)
     @Override
     public PageInfo<OrderInfo> findOrderPage(Integer pageNum, Integer pageSize, String startTime, String endTime,
-                                             Boolean processed, Boolean expired) {
+                                             Integer status) {
         Example example = new Example(OrderInfo.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("expired", expired);
-        criteria.andEqualTo("processed", processed);
+        criteria.andEqualTo("status", status);
 
         if (StrUtil.isNotEmpty(startTime) && StrUtil.isNotEmpty(endTime)) {
             criteria.andBetween("createTime", DateUtil.beginOfDay(DateUtil.parse(startTime)),
@@ -37,29 +45,75 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderInfo> implements Orde
         return new PageInfo<>(list);
     }
 
+    /**
+     * 分页查询已审核但未过期订单列表
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @Transactional(readOnly = true)
     @Override
     public PageInfo<OrderInfo> findProcessedOrderPage(Integer pageNum, Integer pageSize) {
         Example example = new Example(OrderInfo.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("processed", true);
-        criteria.andEqualTo("expired", false);
+        criteria.andEqualTo("status", 0);
         example.orderBy("createTime").desc();
         PageHelper.startPage(pageNum, pageSize);
         List<OrderInfo> list = this.selectByExample(example);
         return new PageInfo<>(list);
     }
 
-    @Transactional(readOnly = true)
+    /**
+     * 将订单设置为未审核状态
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public PageInfo<OrderInfo> findOrderPageByIds(Integer pageNum, Integer pageSize, List ids) {
-        List list = new LinkedList();
-        for (Object id : ids) {
-            OrderInfo orderInfo = this.findById((Long) id);
-            list.add(orderInfo);
-        }
-        PageHelper.startPage(pageNum, pageSize);
-        return new PageInfo<>(list);
+    public Integer updateUnprocessedOrder(Long id) {
+        OrderInfo orderInfo = this.findById(id);
+        orderInfo.setStatus(-1);
+        return this.updateSelective(orderInfo);
+    }
+
+    /**
+     * 将订单设置为已审核状态
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Integer updateProcessedOrder(Long id) {
+        OrderInfo orderInfo = this.findById(id);
+        orderInfo.setStatus(0);
+        return this.updateSelective(orderInfo);
+    }
+
+    /**
+     * 将订单设置为已调度状态
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Integer updateScheduledOrder(Long id) {
+        OrderInfo orderInfo = this.findById(id);
+        orderInfo.setStatus(1);
+        return this.updateSelective(orderInfo);
+    }
+
+    /**
+     * 将订单设置为已完成状态
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Integer updateCompletedOrder(Long id) {
+        OrderInfo orderInfo = this.findById(id);
+        orderInfo.setStatus(2);
+        return this.updateSelective(orderInfo);
     }
 
 }

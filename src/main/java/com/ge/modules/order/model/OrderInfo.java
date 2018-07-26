@@ -1,7 +1,6 @@
 package com.ge.modules.order.model;
 
 import com.ge.common.model.BaseEntity;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -38,15 +37,15 @@ public class OrderInfo extends BaseEntity {
      */
     private String notes;
     /**
-     * 是否已处理
+     * 是否已处理<br/>
+     * -1：unprocessed未处理
+     * 0：processed已处理
+     * 1：Scheduled已调度
+     * 2：expire已完成
      */
-    private Boolean processed;
+    private Integer status;
     /**
      * 审核人
      */
     private String verifier;
-    /**
-     * 是否过期
-     */
-    private Boolean expired;
 }

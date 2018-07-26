@@ -28,23 +28,24 @@ public class OrderController extends BaseController {
     private ProductService orderProductService;
 
     /**
-     * 根据是否审核分页查询订单列表
+     * 根据status分页查询订单列表
      *
      * @param pageNum
      * @param startTime
      * @param endTime
-     * @param processed
+     * @param status
      * @param modelMap
      * @return
      */
     @RequiresPermissions("order:list")
     @GetMapping("/list")
     public String listOrder(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, String startTime,
-                            String endTime, Boolean processed, Boolean expired, ModelMap modelMap) {
+                            String endTime, Integer status, ModelMap modelMap) {
         try {
-            PageInfo<OrderInfo> pageInfo = orderService.findOrderPage(pageNum, PAGESIZE, endTime, startTime, processed, expired);
+            PageInfo<OrderInfo> pageInfo = orderService.findOrderPage(pageNum, PAGESIZE, endTime, startTime, status);
             log.info("分页查询订单列表结果！ pageInfo = {}", pageInfo);
             modelMap.put("pageInfo", pageInfo);
+            modelMap.put("status", status);
         } catch (Exception e) {
             log.error("分页查询订单列表失败! e = {}", e);
         }
@@ -177,8 +178,7 @@ public class OrderController extends BaseController {
     @PostMapping
     public ModelMap addOrderInformation(OrderInfo orderInfo) {
         ModelMap modelMap = new ModelMap();
-        orderInfo.setProcessed(false);
-        orderInfo.setExpired(false);
+        orderInfo.setStatus(-1);
         orderService.save(orderInfo);
         log.info("添加订单成功! orderInfo = {}", orderInfo);
         modelMap.put("status", SUCCESS);

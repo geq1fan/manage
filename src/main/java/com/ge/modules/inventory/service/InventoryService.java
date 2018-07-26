@@ -39,10 +39,18 @@ public interface InventoryService extends BaseService<Inventory> {
     Inventory findByProductName(String productType) throws Exception;
 
     /**
-     * 根据产品规格更新产品库存
+     * 根据产品规格和是否为成品来更新产品总库存
      *
      * @param inventory
      * @return
      */
     Boolean updateProductInventory(Inventory inventory);
+
+    /**
+     * 根据产品id更新产品库存
+     *
+     * @param productId
+     * @return
+     */
+    void updateCompletedInventory(Long productId);
 }

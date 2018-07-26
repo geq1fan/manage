@@ -96,4 +96,9 @@ public class InventoryServiceImpl extends BaseServiceImpl<Inventory> implements 
 
         return new PageInfo<>(InventorysList);
     }
+
+    @Override
+    public void updateCompletedInventory(Long productId) {
+
+    }
 }

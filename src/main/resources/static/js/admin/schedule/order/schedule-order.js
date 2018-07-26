@@ -7,14 +7,14 @@ function order_schedule(title, url, w, h) {
     $(".text-c :checkbox").each(function () {
         var id = $(this).val();
         var isSelected = this.checked;
-        if (isSelected) {
+        if (isSelected && id !== '') {
             selectedIds.push(id);
         } else {
             selectedIds.removeObject(id);
         }
     });
 
-    if (selectedIds == "") {
+    if (selectedIds === "") {
         errorMessage("请先选择一条记录!");
         return false;
     }
