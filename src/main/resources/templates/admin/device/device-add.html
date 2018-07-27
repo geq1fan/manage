@@ -1,0 +1,85 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/common/common}">
+
+<head>
+    <title>添加设备信息</title>
+</head>
+
+<body layout:fragment="content">
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-device-add">
+        <input type="hidden" name="tokenForm" th:value="${#session.getAttribute('tokenForm')}"/>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>设备名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="deviceName" name="deviceName"
+                       th:name="deviceName"
+                       th:value="*{deviceName}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>设备类型：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="deviceType" name="deviceType"
+                       th:name="deviceType"
+                       th:value="*{deviceType}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>所属生产线：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="productline" name="productline"
+                       th:name="productline"
+                       th:value="*{productline}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>位置：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="location" name="location"
+                       th:name="location"
+                       th:value="*{location}"/>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>状态：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="radio-box">
+                    <input type="radio" id="category-1" checked="checked" th:name="status" th:value="-1"/>
+                    <label for="category-1">故障</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="category-2" th:name="status" th:value="0"/>
+                    <label for="category-2">维修</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="category-2" th:name="status" th:value="1"/>
+                    <label for="category-2">闲置</label>
+                </div>
+                <div class="radio-box">
+                    <input type="radio" id="category-2" th:name="status" th:value="2"/>
+                    <label for="category-2">运行</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-success radius" id="admin-role-save">
+                    <i class="icon-ok"></i> 确定
+                </button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<script type="text/javascript" th:src="@{/js/admin/device/device-add.js}"></script>
+</body>
+
+</html>

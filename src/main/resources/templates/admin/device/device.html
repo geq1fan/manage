@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/common/common}">
+
+<head>
+    <title></title>
+</head>
+
+<body layout:fragment="content">
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i>
+    首页
+    <span class="c-gray en">&gt;</span>
+    设备管理
+    <span class="c-gray en">&gt;</span>
+    查看设备信息
+    <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);"
+       title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<form id="myForm" th:action="@{/admin/device/list}" th:method="get">
+    <div class="page-container">
+        <div class="text-c">
+            <input type="text" class="input-text" style="width:250px" placeholder="按条件搜索：类别:关键词"
+                   name="condition"
+                   th:value="${condition}"
+            />
+            <label for="unprocessed" style="margin: 0 5px 0 5px;">
+                <input type="radio" id="unprocessed" th:name="status" th:value="-1" th:checked="*{status} == -1"/>&nbsp;故障设备
+            </label>
+            <label for="processed" style="margin: 0 5px 0 5px;">
+                <input type="radio" id="processed" th:name="status" th:value="0" th:checked="*{status} == 0"/>&nbsp;维修中设备
+            </label>
+            <label for="scheduled" style="margin: 0 5px 0 5px;">
+                <input type="radio" id="scheduled" th:name="status" th:value="1" th:checked="*{status} == 1"/>&nbsp;闲置设备
+            </label>
+            <label for="expired" style="margin: 0 5px 0 5px;">
+                <input type="radio" id="expired" th:name="status" th:value="2" th:checked="*{status} == 2"/>&nbsp;运行中设备
+            </label>
+            <button type="submit" class="btn btn-success">
+                <i class="Hui-iconfont">&#xe665;</i>
+                搜索
+            </button>
+        </div>
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
+                <span class="l">
+                    <a href="javascript:"
+                       th:onclick="'javascript:device_add(\'添加设备\',\'/admin/device/add\',\'800\',\'500\');'"
+                       class="btn btn-primary radius">
+                        <i class="Hui-iconfont">&#xe600;</i> 添加设备</a>
+                </span>
+            <span class="r">共有数据：
+                    <strong th:text="${pageInfo?.total}" id="total">54</strong> 条</span>
+        </div>
+        <table class="table table-border table-bordered table-bg table-hover">
+            <thead>
+            <tr>
+                <th scope="col" colspan="12">设备列表</th>
+            </tr>
+            <tr class="text-c">
+                <th>序号</th>
+                <th>设备名称</th>
+                <th>设备类型</th>
+                <th>所属生产线</th>
+                <th>位置</th>
+                <th>状态</th>
+                <th>上次更新时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-c" th:each="model:${pageInfo?.list}" th:object="${model}">
+                <td th:text="${((pageInfo?.pageNum - 1) * pageInfo?.pageSize) + modelStat.count}">d</td>
+                <td th:text="*{deviceName}">2</td>
+                <td th:text="*{deviceType}">3</td>
+                <td th:text="*{productline}"></td>
+                <td th:text="*{location}"></td>
+                <td class="td-category">
+                    <span class="label radius label-success" th:if="*{status} == -1">已故障</span>
+                    <span class="label radius label-success" th:if="*{status} == 0">维修中</span>
+                    <span class="label radius label-success" th:if="*{status} == 1">已闲置</span>
+                    <span class="label radius label-success" th:if="*{status} == 2">运行中</span>
+                </td>
+                <td th:text="*{#dates.format(modifyTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
+                <td class="td-manage">
+                    <a title="查看" href="javascript:" onclick="system_log_show(this,'10001')"
+                       th:onclick="'javascript:device_view(\'查看详情\', \'/admin/device/view/'+*{id}+'\',\'800\',\'500\');'"
+                       class="ml-5" style="text-decoration:none">
+                        <i class="Hui-iconfont">&#xe725;</i>
+                    </a>
+                    <a title="编辑" href="javascript:" onclick="system_log_show(this,'10001')"
+                       th:onclick="'javascript:device_edit(\'编辑\', \'/admin/device/edit/'+*{id}+'\',\'800\',\'500\');'"
+                       class="ml-5" style="text-decoration:none">
+                        <i class="Hui-iconfont">&#xe6df;</i>
+                    </a>
+                    <a title="删除" href="javascript:" onclick="admin_del(this,'1')"
+                       th:onclick="'javascript:device_del(this, \'/admin/device/'+*{id}+'\');'"
+                       class="ml-5" style="text-decoration:none">
+                        <i class="Hui-iconfont">&#xe6e2;</i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:replace="admin/common/page :: page"></div>
+    </div>
+</form>
+
+<script type="text/javascript" th:src="@{/js/common/page.js}"></script>
+<script type="text/javascript" th:src="@{/js/admin/device/device.js}"></script>
+<script th:inline="javascript">
+
+</script>
+</body>
+
+</html>
