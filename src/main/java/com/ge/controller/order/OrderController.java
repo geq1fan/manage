@@ -233,6 +233,12 @@ public class OrderController extends BaseController {
         return BASE_PATH + "order-product-add";
     }
 
+    /**
+     * 保存产品信息
+     *
+     * @param product
+     * @return
+     */
     @RequiresPermissions("product:add")
     @ResponseBody
     @FormToken(remove = true)

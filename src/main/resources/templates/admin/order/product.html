@@ -31,7 +31,7 @@
             <div class="cl pd-5 bg-1 bk-gray mt-20">
                 <span class="l" style="margin: 0 5px 0 0;">
                     <a href="javascript:"
-                       th:onclick="'javascript:order_product_add(\'添加商品信息\',\'/admin/order/inventory/add\',\'800\',\'500\');'"
+                       th:onclick="'javascript:order_product_add(\'添加商品信息\',\'/admin/order/product/add\',\'800\',\'500\');'"
                        class="btn btn-primary radius">
                         <i class="Hui-iconfont">&#xe600;</i> 添加商品信息</a>
                 </span>
@@ -71,12 +71,12 @@
                         <td th:text="*{#dates.format(modifyTime, 'yyyy-MM-dd HH:mm:ss')}">2014-6-11 11:11:42</td>
                         <td class="td-manage">
                             <a title="编辑" href="javascript:" onclick="system_log_show(this,'10001')"
-                               th:onclick="'javascript:order_product_edit(\'编辑商品信息\', \'/admin/order/inventory/edit/'+*{id}+'\',\'800\',\'500\');'"
+                               th:onclick="'javascript:order_product_edit(\'编辑商品信息\', \'/admin/order/product/edit/'+*{id}+'\',\'800\',\'500\');'"
                                class="ml-5" style="text-decoration:none">
                                 <i class="Hui-iconfont">&#xe6df;</i>
                             </a>
                             <a title="删除" href="javascript:" onclick="admin_del(this,'1')"
-                               th:onclick="'javascript:order_del(this, \'/admin/inventory/'+*{id}+'\');'"
+                               th:onclick="'javascript:order_del(this, \'/admin/order/product/'+*{id}+'\');'"
                                class="ml-5" style="text-decoration:none">
                                 <i class="Hui-iconfont">&#xe6e2;</i>
                             </a>
