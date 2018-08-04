@@ -1,10 +1,9 @@
 package com.ge.common.aop;
 
 
-import com.ge.common.aop.OperationLog;
-import com.ge.util.ShiroUtils;
 import com.ge.modules.log.model.Log;
 import com.ge.modules.log.service.LogService;
+import com.ge.util.ShiroUtils;
 import com.xiaoleilu.hutool.http.HttpUtil;
 import com.xiaoleilu.hutool.json.JSONUtil;
 import org.aspectj.lang.JoinPoint;
@@ -44,7 +43,7 @@ public class OperationLogAspect {
      * 通过注解的方式定义日志切入点
      */
     @Pointcut("@annotation(com.ge.common.aop.OperationLog)")
-    public void logPointCut(){
+    public void logPointCut() {
     }
 
     /**
@@ -75,7 +74,7 @@ public class OperationLogAspect {
             log.setExceptionDetail(null);
 
             localLog.set(log);
-        }  catch (Exception e) {
+        } catch (Exception e) {
             //记录本地异常日志
             logger.error("==后置通知异常==");
             logger.error("异常信息:{}", e.getMessage());
@@ -84,12 +83,12 @@ public class OperationLogAspect {
 
     /**
      * 切入点return内容之后切入内容（可以用来对处理返回值做一些加工处理）
+     *
      * @param ret
      */
     @AfterReturning(returning = "ret", pointcut = "logPointCut()")
     public void doAfterReturning(Object ret) {
         // 处理完请求，返回内容
-
         Log log = localLog.get();
         log.setTimeConsuming(System.currentTimeMillis() - startTime.get());
 
@@ -120,7 +119,7 @@ public class OperationLogAspect {
 
             //保存数据库
             logService.save(log);
-        }  catch (Exception ex) {
+        } catch (Exception ex) {
             //记录本地异常日志
             logger.error("异常方法全路径:{},异常信息:{},请求参数:{}", getFullMethodName(joinPoint), e.getMessage(), JSONUtil.toJsonStr(args));
         }
@@ -138,7 +137,7 @@ public class OperationLogAspect {
         Method method = signature.getMethod();
 
         OperationLog operationLog = method.getAnnotation(OperationLog.class);
-        if(null != operationLog){
+        if (null != operationLog) {
             description = operationLog.value();
         }
         return description;
@@ -146,10 +145,11 @@ public class OperationLogAspect {
 
     /**
      * 获取请求的方法名全路径
+     *
      * @param joinPoint
      * @return
      */
-    private static String getFullMethodName(JoinPoint joinPoint){
+    private static String getFullMethodName(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 
         //请求的方法名全路径
